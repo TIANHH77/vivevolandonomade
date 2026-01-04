@@ -1,91 +1,171 @@
 <!DOCTYPE html>
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <header style="background: #000; color: white; text-align: center; padding: 40px 20px;">
-    <div class="container">
-        <img src="fotos/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nomáde Logo" style="max-width: 300px; height: auto; margin-bottom: 20px;">
-        <h1 style="font-size: 2.5em; margin-bottom: 10px; color: #4a90e2;">Vive Volando Nomáde</h1>
-        <p style="font-size: 1.2em;"><strong>Haroldo Horta</strong> | Fotografía Aérea • Paramotor • Laguna Junín 2026</p>
-        <img src="fotos/hero-salar.jpg" alt="Hero Salar épico" class="hero-principal">
-    </div>
-</header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vive Volando Nomáde - Haroldo Horta | Junín 2026</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; }
-        header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; text-align: center; padding: 60px 20px; }
-        .hero-principal { width: 100%; height: 500px; object-fit: cover; border-radius: 0 0 20px 20px; }
+        body { 
+            font-family: 'Arial Black', Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #fff; 
+            background: #000; /* NEGRO TOTAL */
+        }
+        header { 
+            background: #000; 
+            text-align: center; 
+            padding: 40px 20px; 
+        }
+        .logo { max-width: 350px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 5px 15px rgba(74,144,226,0.5)); }
+        .hero-principal { width: 100%; height: 500px; object-fit: cover; border-radius: 0 0 25px 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section { margin: 50px 0; padding: 30px; background: #f8f9fa; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        h1 { font-size: 3em; margin-bottom: 10px; }
-        h2 { color: #2c5aa0; font-size: 2.2em; margin-bottom: 20px; border-left: 5px solid #4a90e2; padding-left: 15px; }
-        .hero-img { width: 100%; height: 400px; object-fit: cover; border-radius: 10px; margin: 20px 0; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
-        .gallery-img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; transition: transform 0.3s; }
-        .gallery-img:hover { transform: scale(1.05); }
-        .btn { display: inline-block; background: #4a90e2; color: white; padding: 15px 30px; text-decoration: none; border-radius: 30px; font-weight: bold; margin: 20px 0; transition: background 0.3s; }
-        .btn:hover { background: #2c5aa0; }
-        footer { background: #1e3c72; color: white; text-align: center; padding: 40px 20px; margin-top: 60px; }
-        @media (max-width: 768px) { .hero-principal { height: 300px; } .hero-img { height: 250px; } h1 { font-size: 2em; } }
+        .section { 
+            margin: 60px 0; 
+            padding: 40px; 
+            background: rgba(20,20,20,0.9); 
+            border-radius: 20px; 
+            border: 1px solid #333;
+            backdrop-filter: blur(10px);
+        }
+        h1 { font-size: 3.5em; margin-bottom: 15px; color: #4a90e2; text-shadow: 0 0 20px rgba(74,144,226,0.5); }
+        h2 { 
+            font-size: 2.5em; 
+            margin-bottom: 25px; 
+            color: #4a90e2; 
+            border-left: 6px solid #4a90e2; 
+            padding-left: 20px; 
+            text-shadow: 0 0 10px rgba(74,144,226,0.3);
+        }
+        .hero-img { 
+            width: 100%; 
+            height: 450px; 
+            object-fit: cover; 
+            border-radius: 15px; 
+            margin: 25px 0; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            transition: transform 0.4s;
+        }
+        .hero-img:hover { transform: scale(1.02); }
+        .gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
+            gap: 25px; 
+        }
+        .gallery-img { 
+            width: 100%; 
+            height: 350px; 
+            object-fit: cover; 
+            border-radius: 15px; 
+            transition: all 0.4s; 
+            border: 2px solid #333;
+        }
+        .gallery-img:hover { 
+            transform: scale(1.08); 
+            box-shadow: 0 20px 50px rgba(74,144,226,0.4);
+            border-color: #4a90e2;
+        }
+        .btn { 
+            display: inline-block; 
+            background: linear-gradient(45deg, #4a90e2, #357abd); 
+            color: white; 
+            padding: 18px 40px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            font-size: 1.1em;
+            margin: 25px 0; 
+            box-shadow: 0 10px 30px rgba(74,144,226,0.4);
+            transition: all 0.3s;
+        }
+        .btn:hover { 
+            background: linear-gradient(45deg, #357abd, #4a90e2); 
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(74,144,226,0.6);
+        }
+        footer { 
+            background: #111; 
+            color: #ccc; 
+            text-align: center; 
+            padding: 50px 20px; 
+            margin-top: 80px;
+            border-top: 1px solid #333;
+        }
+        footer a { color: #4a90e2; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { 
+            .hero-principal { height: 350px; } 
+            .hero-img { height: 300px; } 
+            h1 { font-size: 2.5em; } 
+            h2 { font-size: 2em; }
+            .gallery { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+    <!-- HEADER CON LOGO NEGRO -->
     <header>
         <div class="container">
-            <h1>🌊 Vive Volando Nomáde</h1>
-            <p><strong>Haroldo Horta</strong> | Fotografía Aérea • Paramotor • Laguna Junín 2026</p>
-            <!-- HERO PRINCIPAL GRANDE -->
-            <img src="fotos/hero-salar.jpg" alt="Hero Salar Andes épico" class="hero-principal"> [file:48]
+            <img src="fotos/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nomáde Logo" class="logo">
+            <h1>Vive Volando Nomáde</h1>
+            <p style="font-size: 1.3em; margin-bottom: 30px;">Haroldo Horta | Fotografía Aérea • Paramotor • Laguna Junín 2026</p>
+            <img src="fotos/hero-salar.jpg" alt="Hero Salar Andes épico" class="hero-principal">
         </div>
     </header>
 
     <div class="container">
+        <!-- FOTOGRAFÍA -->
         <section class="section">
             <h2>📸 Fotografía Laguna de Junín</h2>
-            <img src="fotos/laguna-gomez.jpg" alt="Laguna de Gómez veleros deportes" class="hero-img"> [file:49]
-            <p>Alta calidad: veleros, ciclismo, natación, eventos. Haroldo Horta desde tierra, agua o <strong>aéreo</strong>.</p>
-            <a href="#contacto" class="btn">Consultar Servicios</a>
+            <img src="fotos/laguna-gomez.jpg" alt="Laguna de Gómez veleros deportes" class="hero-img">
+            <p style="font-size: 1.2em; margin: 25px 0;">Alta calidad: veleros, ciclismo, natación, eventos deportivos. <strong>Haroldo Horta</strong> desde tierra, agua o <em>aéreo en 8K</em>.</p>
+            <a href="#contacto" class="btn">Consultar Cobertura</a>
         </section>
 
+        <!-- VUELOS -->
         <section class="section">
             <h2>✈️ Vuelos Paramotor Temporada 2026</h2>
-            <img src="fotos/vuelo-paramotor.jpg" alt="Vuelo paramotor Laguna Junín" class="hero-img"> [file:44]
-            <p>Despega con Haroldo desde la laguna. Paseos, fotos aéreas, <strong>video 8K</strong>.</p>
-            <img src="fotos/paramotorrojoenangar.jpg" alt="Paramotor rojo hangar Junín" class="hero-img"> [file:39]
-            <a href="#contacto" class="btn">Reservar Vuelo</a>
+            <img src="fotos/vuelo-paramotor.jpg" alt="Vuelo paramotor Laguna Junín" class="hero-img">
+            <img src="fotos/paramotorrojoenangar.jpg" alt="Paramotor rojo hangar profesional" class="hero-img">
+            <p style="font-size: 1.2em; margin: 25px 0;">Despega con Haroldo desde la laguna. Paseos, fotografía aérea, <strong>video hasta 8K</strong>. ¡Imposible quedar indiferente!</p>
+            <a href="#contacto" class="btn">Reservar Vuelo YA</a>
         </section>
 
+        <!-- CURSOS -->
         <section class="section">
             <h2>🎓 Cursos / Talleres Personalizados</h2>
-            <img src="fotos/1.jpg" alt="Flamencos taller fotografía" class="hero-img"> [file:43]
-            <p>Composición, luz amanecer/atardecer, teleobjetivos, cámaras acción. <strong>En terreno real</strong>.</p>
-            <a href="#contacto" class="btn">Info Cursos</a>
+            <img src="fotos/1.jpg" alt="Flamencos San Pedro taller fotografía aérea" class="hero-img">
+            <p style="font-size: 1.2em; margin: 25px 0;">Composición profesional, luz amanecer/atardecer, teleobjetivos, cámaras de acción. <strong>Práctica en terreno real</strong>.</p>
+            <a href="#contacto" class="btn">Inscribirme</a>
         </section>
 
+        <!-- GALERÍA -->
         <section class="section">
             <h2>🌅 Galería Aérea Premium</h2>
             <div class="gallery">
-                <img src="fotos/2.jpg" alt="Laguna montañas nevadas" class="gallery-img"> [file:37]
-                <img src="fotos/6.jpg" alt="Paramotor luna llena" class="gallery-img"> [file:38]
-                <img src="fotos/7.jpg" alt="Casa ruinas laguna" class="gallery-img"> [file:41]
-                <img src="fotos/8.jpg" alt="Aves rapaces postes" class="gallery-img"> [file:40]
-                <img src="fotos/3.jpg" alt="Salar vista aérea" class="gallery-img"> [file:42]
-                <img src="fotos/4.jpg" alt="Lagunas coloridas" class="gallery-img"> [file:45]
-                <img src="fotos/5.jpg" alt="Pozas turquesas" class="gallery-img"> [file:47]
-                <img src="fotos/fauna-local.jpg" alt="Fauna local Junín" class="gallery-img"> [file:46]
+                <img src="fotos/2.jpg" alt="Laguna montañas nevadas Andes" class="gallery-img">
+                <img src="fotos/6.jpg" alt="Paramotor luna llena atardecer" class="gallery-img">
+                <img src="fotos/7.jpg" alt="Casa abandonada laguna árbol" class="gallery-img">
+                <img src="fotos/8.jpg" alt="Aves rapaces en postes" class="gallery-img">
+                <img src="fotos/3.jpg" alt="Salar vista aérea colores" class="gallery-img">
+                <img src="fotos/4.jpg" alt="Lagunas coloridas altiplánicas" class="gallery-img">
+                <img src="fotos/5.jpg" alt="Pozas turquesas salar blanco" class="gallery-img">
+                <img src="fotos/fauna-local.jpg" alt="Fauna nativa Junín" class="gallery-img">
             </div>
         </section>
     </div>
 
+    <!-- FOOTER NEGRO -->
     <footer id="contacto">
         <div class="container">
-            <p>© 2026 <strong>Haroldo Horta</strong> | Vive Volando Nomáde | Lo Prado, Santiago<br>
-            <a href="mailto:contacto@vivevolandonomade.com" style="color:#4a90e2;">contacto@vivevolandonomade.com</a></p>
+            <h3 style="color: #4a90e2; margin-bottom: 20px;">¡Reserva tu experiencia!</h3>
+            <p style="font-size: 1.2em;">© 2026 <strong>Haroldo Horta</strong> | Vive Volando Nomáde<br>
+            Lo Prado, Santiago Metropolitan | <a href="mailto:contacto@vivevolandonomade.com">contacto@vivevolandonomade.com</a></p>
         </div>
     </footer>
 </body>
 </html>
+hero-i
+
 
