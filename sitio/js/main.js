@@ -50,6 +50,59 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// ========================================
+// PROTECCIÓN DE IMÁGENES
+// ========================================
+
+// Disable right-click on images
+const allImages = document.querySelectorAll('img');
+allImages.forEach(img => {
+    // Prevent right-click
+    img.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        return false;
+    });
+    
+    // Prevent drag
+    img.addEventListener('dragstart', (e) => {
+        e.preventDefault();
+        return false;
+    });
+    
+    // Add user-select none
+    img.style.userSelect = 'none';
+    img.style.webkitUserSelect = 'none';
+    img.style.mozUserSelect = 'none';
+    img.style.msUserSelect = 'none';
+    
+    // Prevent selection
+    img.setAttribute('draggable', 'false');
+});
+
+// Disable right-click on entire document (optional - puedes comentar si es muy restrictivo)
+// document.addEventListener('contextmenu', (e) => {
+//     if (e.target.tagName === 'IMG') {
+//         e.preventDefault();
+//         return false;
+//     }
+// });
+
+// Disable common keyboard shortcuts for saving
+document.addEventListener('keydown', (e) => {
+    // Ctrl+S or Cmd+S
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        if (document.activeElement.tagName === 'IMG' || 
+            e.target.tagName === 'IMG') {
+            e.preventDefault();
+            return false;
+        }
+    }
+});
+
+// ========================================
+// ANIMATIONS
+// ========================================
+
 // Intersection Observer for animations
 const observerOptions = {
     threshold: 0.1,
@@ -73,7 +126,11 @@ document.querySelectorAll('.servicio-card, .location-tag, .galeria-item').forEac
     observer.observe(el);
 });
 
-// Simple lightbox for gallery (optional)
+// ========================================
+// LIGHTBOX GALLERY
+// ========================================
+
+// Simple lightbox for gallery
 const galeriaItems = document.querySelectorAll('.galeria-item');
 galeriaItems.forEach(item => {
     item.addEventListener('click', () => {
@@ -82,12 +139,23 @@ galeriaItems.forEach(item => {
         lightbox.classList.add('lightbox');
         lightbox.innerHTML = `
             <div class="lightbox-content">
-                <img src="${img.src}" alt="${img.alt}">
+                <img src="${img.src}" alt="${img.alt}" draggable="false">
                 <span class="lightbox-close">&times;</span>
             </div>
         `;
         document.body.appendChild(lightbox);
         document.body.style.overflow = 'hidden';
+        
+        // Protect lightbox image too
+        const lightboxImg = lightbox.querySelector('img');
+        lightboxImg.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
+        });
+        lightboxImg.addEventListener('dragstart', (e) => {
+            e.preventDefault();
+            return false;
+        });
         
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
@@ -127,6 +195,11 @@ lightboxStyles.textContent = `
         max-height: 90vh;
         object-fit: contain;
         border-radius: 5px;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
     }
     
     .lightbox-close {
@@ -138,6 +211,7 @@ lightboxStyles.textContent = `
         cursor: pointer;
         font-weight: 300;
         transition: color 0.3s ease;
+        z-index: 10001;
     }
     
     .lightbox-close:hover {
@@ -151,4 +225,5 @@ lightboxStyles.textContent = `
 `;
 document.head.appendChild(lightboxStyles);
 
-console.log('🚀 Vive Volando Nómade - Landing Page loaded successfully!');
+console.log('🚀 Vive Volando Nómade - Landing Page loaded!');
+console.log('🔒 Image protection enabled');
