@@ -1,0 +1,35 @@
+# Archivos grandes sin optimizar
+*.raw
+*.psd
+*.ai
+
+# Videos originales (usar links externos)
+*.mp4
+*.mov
+*.avi
+
+# Archivos temporales
+*.tmp
+*.bak
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# WordPress (si aplica)
+wp-config.php
+.htaccess
+
+# Node modules si usamos herramientas de build
+node_modules/
+package-lock.json
+
+# Archivos de ambiente
+.env
+.env.local
