@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Servicios de fotografía y video aéreo en Laguna de Gómez - Temporada 2026. Vuelos en paramotor, cobertura de eventos y cursos de fotografía.">
     <title>Vive Volando Nómade - Laguna de Gómez 2026</title>
     
     <style>
@@ -13,342 +13,237 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-            --bg-light: #f8f9fa;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        /* Header transparente sobre el hero */
-        header {
-            background: transparent;
-            color: var(--text-light);
-            padding: 1.5rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: background 0.3s ease;
-        }
-
-        header.scrolled {
-            background: rgba(44, 62, 80, 0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            color: #333;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Header */
+        header {
+            background: #2c3e50;
+            padding: 20px 0;
+            text-align: center;
         }
 
         .logo {
-            height: 70px;
-            opacity: 0.9;
-            transition: all 0.3s ease;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+            height: 80px;
+            margin-bottom: 10px;
         }
 
-        .logo:hover {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        nav a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Hero con imagen hero-salar.jpg de fondo */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
-                        url('images/hero-salar.jpg') center/cover no-repeat fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--text-light);
-            position: relative;
-        }
-
-        .hero-content {
-            z-index: 1;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
-            font-weight: 700;
-            letter-spacing: 2px;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .hero-content p {
-            font-size: 1.8rem;
-            margin-bottom: 2.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1.2rem 2.5rem;
-            background: var(--accent-color);
+        header h1 {
             color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 1s ease-out 0.6s both;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            background: #c0392b;
-            box-shadow: 0 6px 25px rgba(231, 76, 60, 0.5);
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-
-        .btn-whatsapp:hover {
-            background: #20BA5A;
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        section h2 {
             font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-            position: relative;
+            margin: 10px 0;
         }
 
-        section h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--accent-color);
-            margin: 1rem auto 0;
-            border-radius: 2px;
+        header p {
+            color: #ecf0f1;
+            font-size: 1.2rem;
         }
 
-        .sobre {
-            background: var(--bg-light);
-        }
-
-        .sobre-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .sobre-text {
-            padding: 2rem;
-        }
-
-        .sobre-text h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .sobre-text p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .sobre-img {
+        /* Hero Image */
+        .hero-section {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
+            padding: 40px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
 
-        .sobre-img:hover {
-            transform: scale(1.02);
+        /* Servicios */
+        .servicios {
+            padding: 60px 0;
         }
 
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .servicios h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
         }
 
-        .servicio-card {
+        .servicio {
+            margin-bottom: 60px;
             background: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .servicio-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .servicio-card img {
+        .servicio img {
             width: 100%;
-            height: 250px;
+            height: 400px;
             object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .servicio-card:hover img {
-            transform: scale(1.05);
         }
 
         .servicio-content {
-            padding: 2rem;
+            padding: 30px;
         }
 
-        .servicio-content h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+        .servicio h3 {
+            color: #3498db;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
         }
 
-        .servicio-content p {
-            margin-bottom: 0.5rem;
+        .servicio p {
             color: #555;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
 
-        .servicio-content p strong {
-            color: var(--primary-color);
+        .servicio p strong {
+            color: #2c3e50;
         }
 
-        .servicio-content .btn {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            padding: 0.75rem 1.5rem;
+        .btn-whatsapp {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.3s;
         }
 
+        .btn-whatsapp:hover {
+            background: #20BA5A;
+        }
+
+        /* Galería */
         .galeria {
-            background: var(--bg-light);
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .galeria h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
         }
 
         .galeria-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .galeria-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            aspect-ratio: 1;
-            cursor: pointer;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
         .galeria-item img {
             width: 100%;
             height: 100%;
+            aspect-ratio: 1;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            border-radius: 10px;
+            transition: transform 0.3s;
         }
 
-        .galeria-item:hover img {
-            transform: scale(1.15);
+        .galeria-item img:hover {
+            transform: scale(1.05);
         }
 
-        .galeria-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .galeria-item:hover::after {
-            opacity: 1;
-        }
-
+        /* Contacto */
         .contacto {
-            background: var(--primary-color);
-            color: var(--text-light);
+            padding: 60px 0;
+            background: #2c3e50;
+            color: white;
             text-align: center;
         }
 
         .contacto h2 {
-            color: var(--text-light);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
         }
 
-        .contacto h2::after {
-            background: var(--accent-color);
+        .contacto p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
         }
 
-        .contacto > .container > p {
-            
+        .contacto-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .contacto-item {
+            text-align: center;
+        }
+
+        .contacto-item strong {
+            display: block;
+            color: #e74c3c;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: #95a5a6;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer .logo {
+            height: 50px;
+            margin-bottom: 15px;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .galeria-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .servicio img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <img src="images/LOGO!!!-IA-NEGRO.png" alt="Logo" class="logo">
+            <h1>Vive Volando Nómade</h1>
+            <p>Laguna de Gómez - Temporada 2026</p>
+        </div>
+    </header>
+
+    <!-- Hero Image -->
+    <section class="hero-section">
+        <div class="container">
+            <img src="images/hero-salar.jpg" alt="Salar espejo atardecer" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="servicios">
+        <div class="container">
+            <h2>Nuestros Se
+
