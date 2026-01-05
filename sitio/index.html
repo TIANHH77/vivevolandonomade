@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -29,7 +28,7 @@
             color: var(--text-dark);
         }
 
-        /* Header - Posición absoluta sobre el hero */
+        /* Header transparente sobre el hero */
         header {
             background: transparent;
             color: var(--text-light);
@@ -41,7 +40,6 @@
             transition: background 0.3s ease;
         }
 
-        /* Header con fondo al hacer scroll */
         header.scrolled {
             background: rgba(44, 62, 80, 0.95);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -59,18 +57,16 @@
             align-items: center;
         }
 
-        /* Logo posicionado en esquina superior izquierda */
         .logo {
             height: 70px;
             opacity: 0.9;
             transition: all 0.3s ease;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
         }
 
         .logo:hover {
             opacity: 1;
             transform: scale(1.05);
-            filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.5));
         }
 
         nav ul {
@@ -91,11 +87,11 @@
             color: var(--secondary-color);
         }
 
-        /* Hero Section - Imagen de fondo con overlay */
+        /* Hero con imagen hero-salar.jpg de fondo */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
-                        url('images/gallery-7.jpg') center/cover no-repeat fixed;
+                        url('images/hero-salar.jpg') center/cover no-repeat fixed;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -355,254 +351,4 @@
         }
 
         .contacto > .container > p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .contacto-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contacto-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            transition: background 0.3s ease;
-        }
-
-        .contacto-item:hover {
-            background: rgba(255,255,255,0.15);
-        }
-
-        .contacto-item strong {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-        }
-
-        footer {
-            background: #1a252f;
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        footer .logo {
-            height: 50px;
-            margin-bottom: 1rem;
-            opacity: 0.6;
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-            color: #95a5a6;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-
-            .sobre-content {
-                grid-template-columns: 1fr;
-            }
-
-            .galeria-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 1rem;
-            }
-
-            .contacto-info {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-
-            section {
-                padding: 3rem 0;
-            }
-
-            .logo {
-                height: 50px;
-            }
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-</head>
-<body>
-    <header id="header">
-        <nav class="container">
-            <a href="#inicio">
-                <img src="images/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nómade" class="logo">
-            </a>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Vive Volando Nómade</h1>
-            <p>Laguna de Gómez - Temporada 2026</p>
-            <a href="https://wa.me/541144027193" target="_blank" class="btn btn-whatsapp">
-                📱 Reserva tu Experiencia
-            </a>
-        </div>
-    </section>
-
-    <section id="sobre" class="sobre">
-        <div class="container">
-            <h2>Sobre Nosotros</h2>
-            <div class="sobre-content">
-                <div class="sobre-text">
-                    <h3>Capturando momentos desde el cielo</h3>
-                    <p>Somos un equipo de fotógrafos y videógrafos especializados en tomas aéreas con paramotor. Durante la temporada 2026, ofrecemos servicios únicos en la Laguna de Gómez y sus alrededores.</p>
-                    <p>Nuestra pasión es capturar la belleza natural desde perspectivas únicas, combinando tecnología de última generación con el arte de volar.</p>
-                    <p>Ya sea para eventos, sesiones fotográficas personalizadas o exploración aérea, estamos aquí para hacer realidad tu visión desde el cielo.</p>
-                </div>
-                <img src="images/paramotorrojoenangar.jpg" alt="Paramotor rojo en hangar" class="sobre-img">
-            </div>
-        </div>
-    </section>
-
-    <section id="servicios">
-        <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="servicios-grid">
-                <div class="servicio-card">
-                    <img src="images/paramotorrojoenangar.jpg" alt="Vuela en 8K y 360°">
-                    <div class="servicio-content">
-                        <h3>Vuela en 8K y 360°</h3>
-                        <p>Experimenta vistas panorámicas únicas de la Laguna de Gómez. Vuelos guiados con fotografía y video en alta definición incluidos.</p>
-                        <p><strong>Duración:</strong> 30-60 minutos</p>
-                        <a href="https://wa.me/541144027193" target="_blank" class="btn btn-whatsapp">
-                            📱 Reserva tu Experiencia
-                        </a>
-                    </div>
-                </div>
-
-                <div class="servicio-card">
-                    <img src="images/gallery-5.jpg" alt="Cobertura de Eventos">
-                    <div class="servicio-content">
-                        <h3>Reserva tu Experiencia Personalizada</h3>
-                        <p>Fotografía y video aéreo profesional para tus eventos especiales: bodas, cumpleaños, eventos corporativos y más.</p>
-                        <p><strong>Incluye:</strong> Edición profesional en 8K</p>
-                        <a href="https://wa.me/541144027193" target="_blank" class="btn btn-whatsapp">
-                            📱 Reserva tu Experiencia
-                        </a>
-                    </div>
-                </div>
-
-                <div class="servicio-card">
-                    <img src="images/gallery-4.jpg" alt="Cursos de Fotografía">
-                    <div class="servicio-content">
-                        <h3>Consulta por tu Curso 100% Personalizado</h3>
-                        <p>Aprende técnicas de fotografía aérea y de naturaleza. Cursos personalizados para todos los niveles con seguimiento individual.</p>
-                        <p><strong>Modalidad:</strong> Individual o grupal</p>
-                        <a href="https://wa.me/541144027193" target="_blank" class="btn btn-whatsapp">
-                            📱 Consulta tu Curso
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="galeria" class="galeria">
-        <div class="container">
-            <h2>Galería</h2>
-            <div class="galeria-grid">
-                <div class="galeria-item">
-                    <img src="images/gallery-1.jpg" alt="Salar de litio aéreo" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-2.jpg" alt="Casa abandonada pampa" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-3.jpg" alt="Paramotor vuelo 360" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-4.jpg" alt="Carancos fauna local" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-5.jpg" alt="Laguna altiplánica" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-6.jpg" alt="Flamingos en vuelo" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-7.jpg" alt="Salar espejo atardecer" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-8.jpg" alt="Vehículo nómada" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="contacto">
-        <div class="container">
-            <h2>Contacto</h2>
-            <p>¿Listo para una experiencia única? Contáctanos para reservar tu vuelo o servicio.</p>
-            <div class="contacto-info">
-                <div class="contacto-item">
-                    <strong>📧 Email</strong>
-                    <span>info@vivevolandonomade.com</span>
-                </div>
-                <div class="contacto-item">
-                    <strong>📱 WhatsApp</strong>
-                    <span>+54 11 4402-7193</span>
-                </div>
-                <div class="contacto-item">
-                    <strong>📍 Ubicación</strong>
-                    <span>Laguna de Gómez, Buenos Aires</span>
-                </div>
-            </div>
-            <a href="https://wa.me/541144027193" target="_blank" class="btn btn-whatsapp">
-                📱 Reserva tu Experiencia
-            </a>
-        </div>
-    </section>
-
-    <footer>
-        <img src="images/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nómade" class="logo">
-        <p>&copy; 2026 Vive Volando Nómade. Todos los derechos reservados.</p>
-        <p>Laguna de Gómez - Temporada 2026</p>
-    </footer>
-
-    <script>
-        // Script para cambiar el fondo del header al hacer scroll
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    </script>
-</body>
-</html>
+            
