@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Servicios de fotografía y video aéreo en Laguna de Gómez - Temporada 2026. Vuelos en paramotor, cobertura de eventos y cursos de fotografía.">
     <title>Vive Volando Nómade - Laguna de Gómez 2026</title>
     
     <style>
@@ -15,277 +14,214 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-            --bg-light: #f8f9fa;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-        }
-
-        /* Header */
-        header {
-            background: rgba(44, 62, 80, 0.95);
-            color: var(--text-light);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            color: #333;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Header */
+        header {
+            background: #2c3e50;
+            padding: 20px 0;
+            text-align: center;
         }
 
         .logo {
-            height: 60px;
-            opacity: 0.5; /* Logo al 50% de opacidad para mayor sutileza */
-            transition: opacity 0.3s ease;
+            height: 80px;
+            margin-bottom: 10px;
         }
 
-        .logo:hover {
-            opacity: 0.8;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('images/hero-salar.jpg') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--text-light);
-            margin-top: 80px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--accent-color);
+        header h1 {
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            background: #c0392b;
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 0;
-        }
-
-        section h2 {
             font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
+            margin: 10px 0;
         }
 
-        /* Sobre Section */
-        .sobre {
-            background: var(--bg-light);
+        header p {
+            color: #ecf0f1;
+            font-size: 1.2rem;
         }
 
-        .sobre-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .sobre-text {
-            padding: 2rem;
-        }
-
-        .sobre-text h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .sobre-img {
+        /* Hero Image */
+        .hero-section {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
+            padding: 40px 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
 
-        /* Servicios Section */
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        /* Servicios */
+        .servicios {
+            padding: 60px 0;
         }
 
-        .servicio-card {
+        .servicios h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .servicio {
+            margin-bottom: 60px;
             background: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
         }
 
-        .servicio-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .servicio-card img {
+        .servicio img {
             width: 100%;
-            height: 250px;
+            height: 400px;
             object-fit: cover;
         }
 
         .servicio-content {
-            padding: 2rem;
+            padding: 30px;
         }
 
-        .servicio-content h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
+        .servicio h3 {
+            color: #3498db;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
         }
 
-        /* Galería Section */
+        .servicio p {
+            color: #555;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .servicio p strong {
+            color: #2c3e50;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20BA5A;
+        }
+
+        /* Galería */
         .galeria {
-            background: var(--bg-light);
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .galeria h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
         }
 
         .galeria-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .galeria-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            aspect-ratio: 1;
-            cursor: pointer;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
         .galeria-item img {
             width: 100%;
             height: 100%;
+            aspect-ratio: 1;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            border-radius: 10px;
+            transition: transform 0.3s;
         }
 
-        .galeria-item:hover img {
-            transform: scale(1.1);
+        .galeria-item img:hover {
+            transform: scale(1.05);
         }
 
-        /* Contacto Section */
+        /* Contacto */
         .contacto {
-            background: var(--primary-color);
-            color: var(--text-light);
+            padding: 60px 0;
+            background: #2c3e50;
+            color: white;
             text-align: center;
         }
 
         .contacto h2 {
-            color: var(--text-light);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .contacto p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
         }
 
         .contacto-info {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
+            gap: 50px;
+            margin: 30px 0;
             flex-wrap: wrap;
         }
 
         .contacto-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
+            text-align: center;
+        }
+
+        .contacto-item strong {
+            display: block;
+            color: #e74c3c;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
         }
 
         /* Footer */
         footer {
             background: #1a252f;
-            color: var(--text-light);
+            color: #95a5a6;
             text-align: center;
-            padding: 2rem 0;
+            padding: 30px 0;
         }
 
         footer .logo {
             height: 50px;
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
+            opacity: 0.7;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .sobre-content {
-                grid-template-columns: 1fr;
-            }
-
             .galeria-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .servicio img {
+                height: 250px;
             }
         }
     </style>
@@ -293,141 +229,24 @@
 <body>
     <!-- Header -->
     <header>
-        <nav class="container">
-            <img src="images/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nómade" class="logo">
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
+        <div class="container">
+            <img src="images/LOGO!!!-IA-NEGRO.png" alt="Logo" class="logo">
             <h1>Vive Volando Nómade</h1>
             <p>Laguna de Gómez - Temporada 2026</p>
-            <a href="#servicios" class="btn">Descubre Nuestros Servicios</a>
         </div>
-    </section>
+    </header>
 
-    <!-- Sobre Section -->
-    <section id="sobre" class="sobre">
+    <!-- Hero Image -->
+    <section class="hero-section">
         <div class="container">
-            <h2>Sobre Nosotros</h2>
-            <div class="sobre-content">
-                <div class="sobre-text">
-                    <h3>Capturando momentos desde el cielo</h3>
-                    <p>Somos un equipo de fotógrafos y videógrafos especializados en tomas aéreas con paramotor. Durante la temporada 2026, ofrecemos servicios únicos en la Laguna de Gómez y sus alrededores.</p>
-                    <p>Nuestra pasión es capturar la belleza natural desde perspectivas únicas, combinando tecnología de última generación con el arte de volar.</p>
-                    <p>Ya sea para eventos, sesiones fotográficas personalizadas o exploración aérea, estamos aquí para hacer realidad tu visión desde el cielo.</p>
-                </div>
-                <img src="images/paramotorrojoenangar.jpg" alt="Paramotor" class="sobre-img">
-            </div>
+            <img src="images/hero-salar.jpg" alt="Salar espejo atardecer" class="hero-image">
         </div>
     </section>
 
-    <!-- Servicios Section -->
-    <section id="servicios">
+    <!-- Servicios -->
+    <section class="servicios">
         <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="servicios-grid">
-                <div class="servicio-card">
-                    <img src="images/paramotorrojoenangar.jpg" alt="Vuelo en paramotor 360°">
-                    <div class="servicio-content">
-                        <h3>Vuelo en Paramotor 360°</h3>
-                        <p>Experimenta vistas panorámicas únicas de la Laguna de Gómez. Vuelos guiados con fotografía y video incluidos.</p>
-                        <p><strong>Duración:</strong> 30-60 minutos</p>
-                    </div>
-                </div>
-
-                <div class="servicio-card">
-                    <img src="images/laguna-gomez.jpg" alt="Vista de la Laguna de Gómez">
-                    <div class="servicio-content">
-                        <h3>Cobertura de Eventos</h3>
-                        <p>Fotografía y video aéreo profesional para tus eventos especiales: bodas, cumpleaños, eventos corporativos y más.</p>
-                        <p><strong>Incluye:</strong> Edición profesional</p>
-                    </div>
-                </div>
-
-                <div class="servicio-card">
-                    <img src="images/gallery-4.jpg" alt="Fauna local">
-                    <div class="servicio-content">
-                        <h3>Cursos de Fotografía</h3>
-                        <p>Aprende técnicas de fotografía aérea y de naturaleza. Cursos personalizados para todos los niveles.</p>
-                        <p><strong>Modalidad:</strong> Individual o grupal</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Galería Section -->
-    <section id="galeria" class="galeria">
-        <div class="container">
-            <h2>Galería</h2>
-            <div class="galeria-grid">
-                <div class="galeria-item">
-                    <img src="images/gallery-1.jpg" alt="Salar de litio aéreo" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-2.jpg" alt="Casa abandonada pampa" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-3.jpg" alt="Paramotor vuelo 360" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-4.jpg" alt="Carancos fauna local" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-5.jpg" alt="Laguna altiplánica" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-6.jpg" alt="Flamingos en vuelo" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-7.jpg" alt="Salar espejo atardecer" loading="lazy">
-                </div>
-                <div class="galeria-item">
-                    <img src="images/gallery-8.jpg" alt="Vehículo nómada" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacto Section -->
-    <section id="contacto" class="contacto">
-        <div class="container">
-            <h2>Contacto</h2>
-            <p>¿Listo para una experiencia única? Contáctanos para reservar tu vuelo o servicio.</p>
-            <div class="contacto-info">
-                <div class="contacto-item">
-                    <strong>📧 Email</strong>
-                    <span>info@vivevolandonomade.com</span>
-                </div>
-                <div class="contacto-item">
-                    <strong>📱 WhatsApp</strong>
-                    <span>+54 9 11 XXXX-XXXX</span>
-                </div>
-                <div class="contacto-item">
-                    <strong>📍 Ubicación</strong>
-                    <span>Laguna de Gómez, Buenos Aires</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <img src="images/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nómade" class="logo">
-        <p>&copy; 2026 Vive Volando Nómade. Todos los derechos reservados.</p>
-        <p>Laguna de Gómez - Temporada 2026</p>
-    </footer>
-</body>
-</html>
+            <h2>Nuestros Se
 
 
 
