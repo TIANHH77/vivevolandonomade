@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -28,15 +29,21 @@
             color: var(--text-dark);
         }
 
-        /* Header */
+        /* Header - Posición absoluta sobre el hero */
         header {
-            background: rgba(44, 62, 80, 0.95);
+            background: transparent;
             color: var(--text-light);
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: background 0.3s ease;
+        }
+
+        /* Header con fondo al hacer scroll */
+        header.scrolled {
+            background: rgba(44, 62, 80, 0.95);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
@@ -52,17 +59,18 @@
             align-items: center;
         }
 
+        /* Logo posicionado en esquina superior izquierda */
         .logo {
-            height: 60px;
-            opacity: 0.75;
+            height: 70px;
+            opacity: 0.9;
             transition: all 0.3s ease;
-            filter: brightness(1);
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
         }
 
         .logo:hover {
             opacity: 1;
-            filter: brightness(1.1);
             transform: scale(1.05);
+            filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.5));
         }
 
         nav ul {
@@ -76,36 +84,43 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         nav a:hover {
             color: var(--secondary-color);
         }
 
-        /* Hero Section */
+        /* Hero Section - Imagen de fondo con overlay */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('images/hero-salar.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), 
+                        url('images/gallery-7.jpg') center/cover no-repeat fixed;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: var(--text-light);
-            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 1;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            font-weight: 700;
+            letter-spacing: 2px;
             animation: fadeInDown 1s ease-out;
         }
 
         .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
             animation: fadeInUp 1s ease-out 0.3s both;
         }
 
@@ -133,36 +148,36 @@
 
         .btn {
             display: inline-block;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             background: var(--accent-color);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: bold;
+            font-size: 1.1rem;
             transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
             animation: fadeInUp 1s ease-out 0.6s both;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .btn:hover {
             transform: translateY(-3px);
             background: #c0392b;
-            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
+            box-shadow: 0 6px 25px rgba(231, 76, 60, 0.5);
         }
 
-        /* WhatsApp Button - Color verde de WhatsApp */
         .btn-whatsapp {
             background: #25D366;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.7rem;
         }
 
         .btn-whatsapp:hover {
             background: #20BA5A;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
         }
 
-        /* Sections */
         section {
             padding: 5rem 0;
         }
@@ -185,7 +200,6 @@
             border-radius: 2px;
         }
 
-        /* Sobre Section */
         .sobre {
             background: var(--bg-light);
         }
@@ -225,7 +239,6 @@
             transform: scale(1.02);
         }
 
-        /* Servicios Section */
         .servicios-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -281,7 +294,6 @@
             padding: 0.75rem 1.5rem;
         }
 
-        /* Galería Section */
         .galeria {
             background: var(--bg-light);
         }
@@ -328,7 +340,6 @@
             opacity: 1;
         }
 
-        /* Contacto Section */
         .contacto {
             background: var(--primary-color);
             color: var(--text-light);
@@ -377,7 +388,6 @@
             color: var(--accent-color);
         }
 
-        /* Footer */
         footer {
             background: #1a252f;
             color: var(--text-light);
@@ -396,22 +406,17 @@
             color: #95a5a6;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             nav ul {
                 display: none;
             }
 
-            .hero {
-                margin-top: 70px;
-            }
-
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .hero-content p {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
 
             .sobre-content {
@@ -437,17 +442,17 @@
             }
         }
 
-        /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <header id="header">
         <nav class="container">
-            <img src="images/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nómade" class="logo">
+            <a href="#inicio">
+                <img src="images/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nómade" class="logo">
+            </a>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#sobre">Sobre</a></li>
@@ -458,18 +463,16 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="hero-content">
             <h1>Vive Volando Nómade</h1>
             <p>Laguna de Gómez - Temporada 2026</p>
-            <a href="https://wa.me/+541144027193" target="_blank" class="btn btn-whatsapp">
+            <a href="https://wa.me/541144027193" target="_blank" class="btn btn-whatsapp">
                 📱 Reserva tu Experiencia
             </a>
         </div>
     </section>
 
-    <!-- Sobre Section -->
     <section id="sobre" class="sobre">
         <div class="container">
             <h2>Sobre Nosotros</h2>
@@ -485,7 +488,6 @@
         </div>
     </section>
 
-    <!-- Servicios Section -->
     <section id="servicios">
         <div class="container">
             <h2>Nuestros Servicios</h2>
@@ -496,19 +498,19 @@
                         <h3>Vuela en 8K y 360°</h3>
                         <p>Experimenta vistas panorámicas únicas de la Laguna de Gómez. Vuelos guiados con fotografía y video en alta definición incluidos.</p>
                         <p><strong>Duración:</strong> 30-60 minutos</p>
-                        <a href="https://wa.me/+541144027193" target="_blank" class="btn btn-whatsapp">
+                        <a href="https://wa.me/541144027193" target="_blank" class="btn btn-whatsapp">
                             📱 Reserva tu Experiencia
                         </a>
                     </div>
                 </div>
 
                 <div class="servicio-card">
-                    <img src="images/laguna-gomez.jpg" alt="Cobertura de Eventos">
+                    <img src="images/gallery-5.jpg" alt="Cobertura de Eventos">
                     <div class="servicio-content">
                         <h3>Reserva tu Experiencia Personalizada</h3>
                         <p>Fotografía y video aéreo profesional para tus eventos especiales: bodas, cumpleaños, eventos corporativos y más.</p>
                         <p><strong>Incluye:</strong> Edición profesional en 8K</p>
-                        <a href="https://wa.me/+541144027193" target="_blank" class="btn btn-whatsapp">
+                        <a href="https://wa.me/541144027193" target="_blank" class="btn btn-whatsapp">
                             📱 Reserva tu Experiencia
                         </a>
                     </div>
@@ -520,7 +522,7 @@
                         <h3>Consulta por tu Curso 100% Personalizado</h3>
                         <p>Aprende técnicas de fotografía aérea y de naturaleza. Cursos personalizados para todos los niveles con seguimiento individual.</p>
                         <p><strong>Modalidad:</strong> Individual o grupal</p>
-                        <a href="https://wa.me/+541144027193" target="_blank" class="btn btn-whatsapp">
+                        <a href="https://wa.me/541144027193" target="_blank" class="btn btn-whatsapp">
                             📱 Consulta tu Curso
                         </a>
                     </div>
@@ -529,7 +531,6 @@
         </div>
     </section>
 
-    <!-- Galería Section -->
     <section id="galeria" class="galeria">
         <div class="container">
             <h2>Galería</h2>
@@ -562,7 +563,6 @@
         </div>
     </section>
 
-    <!-- Contacto Section -->
     <section id="contacto" class="contacto">
         <div class="container">
             <h2>Contacto</h2>
@@ -581,19 +581,28 @@
                     <span>Laguna de Gómez, Buenos Aires</span>
                 </div>
             </div>
-            <a href="https://wa.me/+541144027193" target="_blank" class="btn btn-whatsapp">
+            <a href="https://wa.me/541144027193" target="_blank" class="btn btn-whatsapp">
                 📱 Reserva tu Experiencia
             </a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <img src="images/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nómade" class="logo">
         <p>&copy; 2026 Vive Volando Nómade. Todos los derechos reservados.</p>
         <p>Laguna de Gómez - Temporada 2026</p>
     </footer>
+
+    <script>
+        // Script para cambiar el fondo del header al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
-
-   
