@@ -1,600 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Haroldo Horta documenta Sudamérica desde ultraligero y paramotor. Fotografía 8K, videos aéreos, cursos exclusivos desde Laguna de Gómez, Junín, Argentina.">
-    <title>Vive Volando Nómade - Haroldo Horta</title>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            color: #e0e0e0;
-            background: #1a1a1a;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .logo {
-            height: 80px;
-            margin-bottom: 15px;
-        }
-
-        header h1 {
-            color: white;
-            font-size: 2.5rem;
-            margin: 10px 0;
-            font-weight: 700;
-        }
-
-        header p {
-            color: #b0b0b0;
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            padding: 60px 0;
-            background: #0f0f0f;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .hero-text h2 {
-            color: #ffffff;
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .hero-text p {
-            color: #b0b0b0;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-
-        .hero-text .highlight {
-            background: rgba(255, 193, 7, 0.15);
-            padding: 20px;
-            border-left: 4px solid #ffc107;
-            margin: 20px 0;
-            font-style: italic;
-            color: #ffc107;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-        }
-
-        /* Servicios */
-        .servicios {
-            padding: 60px 0;
-            background: #1a1a1a;
-        }
-
-        .servicios h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #ffffff;
-            font-weight: 700;
-        }
-
-        .servicios > .container > p {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #b0b0b0;
-            margin-bottom: 50px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .servicio {
-            margin-bottom: 60px;
-            background: #242424;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-            transition: transform 0.3s;
-        }
-
-        .servicio:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-        }
-
-        .servicio img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-        }
-
-        .servicio-content {
-            padding: 40px;
-        }
-
-        .servicio h3 {
-            color: #3498db;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .servicio p {
-            color: #b0b0b0;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .servicio p strong {
-            color: #ffffff;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-        }
-
-        .btn-whatsapp {
-            display: inline-block;
-            background: #25D366;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-whatsapp:hover {
-            background: #20BA5A;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
-        }
-
-        .btn-secondary {
-            background: #3498db;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background: #2980b9;
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
-        }
-
-        /* Archivo Fotográfico */
-        .archivo {
-            padding: 60px 0;
-            background: #0f0f0f;
-            color: white;
-        }
-
-        .archivo h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .archivo > .container > p {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            margin-bottom: 40px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-
-        .archivo-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .archivo-item {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            transition: background 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .archivo-item:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        .youtube-info {
-            background: rgba(231, 76, 60, 0.15);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid rgba(231, 76, 60, 0.4);
-            margin-top: 40px;
-        }
-
-        .youtube-info p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #e0e0e0;
-        }
-
-        /* Galería */
-        .galeria {
-            padding: 60px 0;
-            background: #1a1a1a;
-        }
-
-        .galeria h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            color: #ffffff;
-            font-weight: 700;
-        }
-
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .galeria-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            cursor: pointer;
-        }
-
-        .galeria-item img {
-            width: 100%;
-            height: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .galeria-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Contacto */
-        .contacto {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .contacto h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .contacto > .container > p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            color: #b0b0b0;
-        }
-
-        .contacto-info {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-
-        .contacto-item {
-            text-align: center;
-            padding: 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            min-width: 200px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .contacto-item strong {
-            display: block;
-            color: #e74c3c;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .contacto-item span {
-            color: #b0b0b0;
-        }
-
-        /* Footer */
-        footer {
-            background: #000000;
-            color: #707070;
-            text-align: center;
-            padding: 30px 0;
-        }
-
-        footer .logo {
-            height: 50px;
-            margin-bottom: 15px;
-            opacity: 0.7;
-        }
-
-        footer p {
-            margin: 5px 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-image {
-                height: 300px;
-            }
-
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            .servicio img {
-                height: 350px;
-            }
-
-            .galeria-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .btn-group {
-                flex-direction: column;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Reservas - Vive Volando Nómade</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      background: #222;
+      border-bottom: 4px solid #ffc107;
+    }
+    nav {
+      background: #000;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    nav a {
+      color: #ffc107;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      margin: 5px;
+    }
+    .btn-secondary {
+      background-color: #ff5722;
+      border: none;
+      margin: 5px;
+    }
+    .aviso {
+      background:#222;
+      padding:15px;
+      border-left:4px solid #ffc107;
+      color:#ffc107;
+      margin-bottom:20px;
+    }
+    .archivo-list, .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .archivo-item, .galeria-item {
+      background: #222;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .galeria-item img {
+      width: 100%;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <img src="sitio/images/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nómade" class="logo">
-            <h1>Vive Volando Nómade</h1>
-            <p>Haroldo Horta documenta Sudamérica desde ultraligero y paramotor. Fotografía 8K, videos aéreos, cursos exclusivos.</p>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h2>Viaja en Motor Home por Sudamérica</h2>
-                    <p>Vuelos en Paramotor y fotografía aérea junto a Haroldo Horta y sus perros. Compartimos desde el aire y desde la ruta las historias que encontramos en el camino.</p>
-                    
-                    <p><strong>Más de 30 años de fotografía y vuelo:</strong> de corresponsal de guerra, en Nicaragua y Colombia, luego recorriendo Chile de norte a sur, desde San Pedro de Atacama, a la Antártica, dejando tomas únicas desde el aire.</p>
-                    
-                    <div class="highlight">
-                        El año pasado jubilé y decidí vender todo y transformar mi camioneta en una casa estudio rodante, actualmente en Junín Argentina.
-                    </div>
-                    
-                    <p style="font-size: 1.3rem; color: #e74c3c; font-weight: bold;">¡Acompáñame en este viaje de vuelo y fotografía!</p>
-                </div>
-                <img src="sitio/images/hero-salar.jpg" alt="Haroldo Horta - Fotografía aérea" class="hero-image">
-            </div>
-        </div>
-    </section>
+<header>
+  <h1>Reservas de Vuelo y Eventos</h1>
+  <p>Experiencias únicas con seguridad y confianza</p>
+</header>
 
-    <!-- Servicios -->
-    <section class="servicios">
-        <div class="container">
-            <h2>Vuelos en Junín - Temporada Actual</h2>
-            <p>Despega en paramotor y ultraligero junto a Haroldo Horta desde la laguna de Junín. Vuelos de paseo, fotografía aérea y video para que te lleves el recuerdo y lo compartas.</p>
+<!-- Menú de navegación -->
+<nav>
+  <a href="#vuelo">✈️ Vuelo</a>
+  <a href="#evento">📸 Evento</a>
+  <a href="#archivo">📷 Archivo</a>
+  <a href="#galeria">🖼️ Galería</a>
+</nav>
 
-            <!-- Servicio 1: Vuelos -->
-            <div class="servicio">
-                <img src="sitio/images/paramotorrojoenangar.jpg" alt="Vuelos en paramotor">
-                <div class="servicio-content">
-                    <h3>🚁 Vuelos en Paramotor y Ultraligero</h3>
-                    <p>Experimenta vistas panorámicas únicas de la Laguna de Gómez desde el aire. Vuelos guiados con fotografía y video en 8K incluidos.</p>
-                    <p><strong>Incluye:</strong> Registro completo de tu vuelo en alta calidad para que lo compartas en redes sociales</p>
-                    <p><strong>Duración:</strong> 30-60 minutos</p>
-                    <div class="btn-group">
-                        <a href="https://wa.me/541144027193" target="_blank" class="btn-whatsapp">
-                            📱 Reserva tu Vuelo
-                        </a>
-                    </div>
-                </div>
-            </div>
+<main class="container">
 
-            <!-- Servicio 2: Fotografía y Video -->
-            <div class="servicio">
-                <img src="sitio/images/servicio-foto-laguna.jpg" alt="Fotografía en la laguna">
-                <div class="servicio-content">
-                    <h3>📸 Fotografía y Video en la Laguna de Junín</h3>
-                    <p>Registramos en alta calidad las actividades que dan vida a la Laguna de Gómez: veleros, ciclismo, natación y eventos deportivos. Desde tierra, agua o aire, Haroldo Horta documenta cada jornada con el ojo de un fotógrafo y la experiencia de años contando historias en movimiento.</p>
-                    <p><strong>Servicios:</strong> Cobertura de eventos, sesiones fotográficas personalizadas, video documental</p>
-                    <p><strong>Calidad:</strong> Fotografía 8K y video profesional con edición incluida</p>
-                    <div class="btn-group">
-                        <a href="https://wa.me/541144027193" target="_blank" class="btn-whatsapp">
-                            📱 Consultar Servicios Foto y Video
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <!-- Sección Vuelo / Regalo -->
+  <section id="vuelo">
+    <h2>✈️ Vuelo Ultraligero / Regalo</h2>
+    <p class="aviso">
+      ⚠️ Los vuelos están sujetos a condiciones climáticas.<br>
+      Normalmente se realizan entre las 9:00 y las 10:30 por la mañana o bien entre las 18:00 y las 21:00 horas en la tarde.<br>
+      Siempre priorizamos la seguridad de los pasajeros para que tengan una experiencia placentera e inolvidable, junto con su registro en 8K.<br><br>
+      💰 Valor final del vuelo: <strong>$100.000 ARS</strong>
+    </p>
+    <div style="text-align:center;">
+      <a href="https://forms.gle/4g32Y7f6BNPqMmdG9" target="_blank" class="btn btn-primary">
+        ✍️ Completar Formulario Vuelo / Regalo
+      </a>
+      <a href="https://paypal.me/vivevolandonomade/20000" target="_blank" class="btn btn-secondary">
+        🛒 Reservar con Seña $20k ARS
+      </a>
+    </div>
+  </section>
 
-            <!-- Servicio 3: Cursos -->
-            <div class="servicio">
-                <img src="sitio/images/servicio-cursos-fauna.jpg" alt="Cursos de fotografía">
-                <div class="servicio-content">
-                    <h3>🎯 Talleres de Fotografía y Video</h3>
-                    <p>Ofrecemos talleres prácticos de fotografía y video para entusiastas que quieran aprender en el terreno o usuarios avanzados que quieran mejorar su técnica: composición, luz de amanecer y atardecer, uso de teleobjetivos y cámaras de acción mientras se capturan las actividades reales de la laguna.</p>
-                    <p><strong>Modalidad:</strong> Individual o grupal</p>
-                    <p><strong>Niveles:</strong> Desde principiantes hasta avanzados</p>
-                    <p><strong>Incluye:</strong> Práctica en situaciones reales, revisión de material, consejos personalizados</p>
-                    <div class="btn-group">
-                        <a href="https://wa.me/541144027193" target="_blank" class="btn-whatsapp btn-secondary">
-                            📱 Quiero Info de Cursos
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Sección Evento -->
+  <section id="evento">
+    <h2>📸 Evento Audiovisual</h2>
+    <p class="aviso">
+      ⚠️ La cobertura audiovisual está sujeta a condiciones climáticas y técnicas.<br>
+      En caso de reprogramación, nos comunicaremos con el organizador para asegurar la mejor experiencia posible.<br><br>
+      💰 Valor final del evento: <strong>$200.000 ARS</strong>
+    </p>
+    <div style="text-align:center;">
+      <a href="https://forms.gle/1zFJVcxempE4PLcy9" target="_blank" class="btn btn-primary">
+        ✍️ Completar Formulario Evento
+      </a>
+      <a href="https://paypal.me/vivevolandonomade/50000" target="_blank" class="btn btn-secondary">
+        💳 Reservar con Seña $50k ARS
+      </a>
+    </div>
+  </section>
 
-    <!-- Archivo Fotográfico -->
-    <section class="archivo">
-        <div class="container">
-            <h2>Archivo Fotográfico Vive Volando Nómade</h2>
-            <p>Más de tres décadas de fotografía y vuelo: de corresponsal de guerra a San Pedro de Atacama, faros de Chile desde el aire, la Antártida y ahora Junín. Este archivo en construcción será la base de futuros libros, fondos de pantalla y contenidos exclusivos para la comunidad de Vive Volando Nómade.</p>
-            
-            <div class="archivo-list">
-                <div class="archivo-item">
-                    <strong>📰 Corresponsal de Guerra</strong>
-                    <p>Nicaragua, Colombia, Chile</p>
-                </div>
-                <div class="archivo-item">
-                    <strong>🏜️ San Pedro de Atacama</strong>
-                    <p>Chile</p>
-                </div>
-                <div class="archivo-item">
-                    <strong>🗼 Faros desde el Aire</strong>
-                    <p>Chile</p>
-                </div>
-                <div class="archivo-item">
-                    <strong>⛰️ Cajón del Maipo</strong>
-                    <p>Chile</p>
-                </div>
-                <div class="archivo-item">
-                    <strong>❄️ Antártica y Patagonia</strong>
-                    <p>Chile</p>
-                </div>
-                <div class="archivo-item">
-                    <strong>🌾 Junín y Saladillo</strong>
-                    <p>Argentina</p>
-                </div>
-                <div class="archivo-item">
-                    <strong>🏛️ Cusco, Lima, Nazca</strong>
-                    <p>Perú</p>
-                </div>
-                <div class="archivo-item">
-                    <strong>🧂 Salar de Uyuni</strong>
-                    <p>Bolivia</p>
-                </div>
-            </div>
-
-            <div class="youtube-info">
-                <p><strong>🎥 Contenidos Exclusivos para la Comunidad</strong></p>
-                <p>Todo este material se transformará en contenidos exclusivos para la comunidad de Vive Volando Nómade: detrás de cámaras, tutoriales de fotografía y video en la laguna, y acceso anticipado a nuevas series para miembros del canal de YouTube.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Galería -->
-    <section class="galeria">
-        <div class="container">
-            <h2>Galería</h2>
-            <div class="galeria-grid">
-                <div class="galeria-item">
-                    <img src="sitio/images/gallery-1.jpg" alt="Salar de litio aéreo">
-                </div>
-                <div class="galeria-item">
-                    <img src="sitio/images/gallery-2.jpg" alt="Casa abandonada pampa">
-                </div>
-                <div class="galeria-item">
-                    <img src="sitio/images/gallery-3.jpg" alt="Paramotor vuelo 360">
-                </div>
-                <div class="galeria-item">
-                    <img src="sitio/images/gallery-4.jpg" alt="Carancos fauna local">
-                </div>
-                <div class="galeria-item">
-                    <img src="sitio/images/gallery-5.jpg" alt="Laguna altiplánica">
-                </div>
-                <div class="galeria-item">
-                    <img src="sitio/images/gallery-6.jpg" alt="Flamingos en vuelo">
-                </div>
-                <div class="galeria-item">
-                    <img src="sitio/images/gallery-7.jpg" alt="Salar espejo atardecer">
-                </div>
-                <div class="galeria-item">
-                    <img src="sitio/images/gallery-8.jpg" alt="Vehículo nómada">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacto -->
-    <section class="contacto">
-        <div class="container">
-            <h2>Contacto</h2>
-            <p>¿Listo para una experiencia única? Contáctanos para reservar tu vuelo o servicio.</p>
-            <div class="contacto-info">
-                <div class="contacto-item">
-                    <strong>📧 Email</strong>
-                    <span>info@vivevolandonomade.com</span>
-                </div>
-                <div class="contacto-item">
-                    <strong>📱 WhatsApp</strong>
-                    <span>+54 11 4402-7193</span>
-                </div>
-                <div class="contacto-item">
-                    <strong>📍 Ubicación</strong>
-                    <span>Laguna de Gómez, Junín<br>Buenos Aires, Argentina</span>
-                </div>
-            </div>
-            <a href="https://wa.me/541144027193" target="_blank" class="btn-whatsapp">
-                📱 Contáctanos por WhatsApp
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <img src="sitio/images/LOGO!!!-IA-NEGRO.png" alt="Vive Volando Nómade" class="logo">
-        <p>&copy; 2026 Vive Volando Nómade - Haroldo Horta</p>
-        <p>Laguna de Gómez, Junín, Buenos Aires, Argentina</p>
-        <p>Fotografía Aérea | Vuelos en Paramotor | Talleres de Fotografía</p>
-    </footer>
-</body>
-</html>
+  <!-- Archivo Fotográfico -->
+  <section id="archivo" class="archivo">
+    <div class="container">
+      <h2>Archivo Fotográfico Vive Volando Nómade</h2>
+      <p>Más de tres décadas de fotografía y vuelo: de corresponsal de guerra a San Pedro de Atacama
