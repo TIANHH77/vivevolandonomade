@@ -4,74 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal de Reservas - Vive Volando Nómade</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
   <style>
-    body {
-      background-color: #111;
-      color: #eee;
-      font-family: Arial, sans-serif;
-    }
-    header {
-      padding: 2rem;
-      text-align: center;
-      background: #222;
-      border-bottom: 4px solid #ffc107;
-    }
-    nav {
-      background: #000;
-      padding: 0.5rem;
-      text-align: center;
-    }
-    nav a {
-      color: #ffc107;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 2rem;
-    }
-    .btn-primary {
-      background-color: #007bff;
-      border: none;
-      margin: 5px;
-    }
-    .btn-secondary {
-      background-color: #ff5722;
-      border: none;
-      margin: 5px;
-    }
-    .aviso {
-      background:#222;
-      padding:15px;
-      border-left:4px solid #ffc107;
-      color:#ffc107;
-      margin-bottom:20px;
-    }
-    .archivo-list, .galeria-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
-    .archivo-item, .galeria-item {
-      background: #222;
-      padding: 1rem;
-      border-radius: 8px;
-    }
-    .galeria-item img {
-      width: 100%;
-      border-radius: 8px;
-    }
+    body { background-color: #111; color: #eee; font-family: Arial, sans-serif; }
+    header { padding: 2rem; text-align: center; background: linear-gradient(135deg, #222, #000); border-bottom: 4px solid #ffc107; }
+    nav { background: #000; padding: 0.5rem; text-align: center; }
+    nav a { color: #ffc107; margin: 0 15px; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+    nav a:hover { color: #fff; }
+    section { padding: 2rem; }
+    .btn-primary { background-color: #007bff; border: none; margin: 5px; }
+    .btn-secondary { background-color: #ff5722; border: none; margin: 5px; }
+    .aviso { background: #222; padding: 15px; border-left: 4px solid #ffc107; color: #ffc107; margin-bottom: 20px; border-radius: 0 8px 8px 0; }
+    .archivo-list, .galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .galeria-item { background: #222; padding: 1rem; border-radius: 8px; text-align: center; }
+    .galeria-item iframe { width: 100%; height: 200px; border-radius: 8px; }
+    .ratio iframe { border-radius: 8px; }
+    footer { background: #000; padding: 2rem; text-align: center; border-top: 4px solid #ffc107; margin-top: 3rem; }
+    @media (max-width: 768px) { .galeria-item iframe { height: 150px; } }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Reservas de Vuelo y Eventos</h1>
-  <p>Experiencias únicas con seguridad y confianza</p>
+  <h1><i class="bi bi-airplane-engines-fill"></i> Reservas de Vuelo y Eventos</h1>
+  <p>Experiencias únicas en paramotor con seguridad, 8K y Laguna de Gómez, Junín.</p>
 </header>
 
-<!-- Menú de navegación -->
 <nav>
   <a href="#vuelo">✈️ Vuelo</a>
   <a href="#evento">📸 Evento</a>
@@ -83,45 +42,101 @@
 
   <!-- Sección Vuelo / Regalo -->
   <section id="vuelo">
-    <h2>✈️ Vuelo Ultraligero / Regalo</h2>
+    <h2><i class="bi bi-airplane"></i> Vuelo Ultraligero / Regalo</h2>
     <p class="aviso">
-      ⚠️ Los vuelos están sujetos a condiciones climáticas.<br>
-      Normalmente se realizan entre las 9:00 y las 10:30 por la mañana o bien entre las 18:00 y las 21:00 horas en la tarde.<br>
-      Siempre priorizamos la seguridad de los pasajeros para que tengan una experiencia placentera e inolvidable, junto con su registro en 8K.<br><br>
-      💰 Valor final del vuelo: <strong>$100.000 ARS</strong>
+      ⚠️ Sujeto a clima. Mañana 9-10:30 o tarde 18-21h.<br>
+      Seguridad #1 + registro 8K inolvidable.<br><br>
+      💰 <strong>$100.000 ARS</strong> (vigencia 3 meses).
     </p>
-    <div style="text-align:center;">
-      <a href="https://forms.gle/4g32Y7f6BNPqMmdG9" target="_blank" class="btn btn-primary">
-        ✍️ Completar Formulario Vuelo / Regalo
+    <!-- Video Vuelo 4K -->
+    <div class="ratio ratio-16x9 mb-4 mx-auto" style="max-width: 800px;">
+      <iframe src="https://www.youtube.com/embed/wg1nS9s_7BE" title="Vuelo Baustismo JP Guevara 4K Junín" allowfullscreen loading="lazy"></iframe>[web:10]
+    </div>
+    <div class="text-center">
+      <a href="https://forms.gle/4g32Y7f6BNPqMmdG9" target="_blank" class="btn btn-primary btn-lg">
+        ✍️ Formulario Vuelo / Regalo
       </a>
-      <a href="https://paypal.me/vivevolandonomade/20000" target="_blank" class="btn btn-secondary">
-        🛒 Reservar con Seña $20k ARS
+      <a href="https://paypal.me/vivevolandonomade/20000" target="_blank" class="btn btn-secondary btn-lg">
+        🛒 Seña $20k ARS
       </a>
     </div>
   </section>
 
   <!-- Sección Evento -->
   <section id="evento">
-    <h2>📸 Evento Audiovisual</h2>
+    <h2><i class="bi bi-camera-video"></i> Evento Audiovisual</h2>
     <p class="aviso">
-      ⚠️ La cobertura audiovisual está sujeta a condiciones climáticas y técnicas.<br>
-      En caso de reprogramación, nos comunicaremos con el organizador para asegurar la mejor experiencia posible.<br><br>
-      💰 Valor final del evento: <strong>$200.000 ARS</strong>
+      ⚠️ Sujeto a clima/técnica. Reprogramamos si hace falta.<br><br>
+      💰 <strong>$200.000 ARS</strong> (cobertura + edición pro).
     </p>
-    <div style="text-align:center;">
-      <a href="https://forms.gle/1zFJVcxempE4PLcy9" target="_blank" class="btn btn-primary">
-        ✍️ Completar Formulario Evento
+    <!-- Video Evento Ejemplo -->
+    <div class="ratio ratio-16x9 mb-4 mx-auto" style="max-width: 800px;">
+      <iframe src="https://www.youtube.com/embed/yNbZlUx1cio" title="El Cruce 2.5 Km 4K" allowfullscreen loading="lazy"></iframe>[web:11]
+    </div>
+    <div class="text-center">
+      <a href="https://forms.gle/1zFJVcxempE4PLcy9" target="_blank" class="btn btn-primary btn-lg">
+        ✍️ Formulario Evento
       </a>
-      <a href="https://paypal.me/vivevolandonomade/50000" target="_blank" class="btn btn-secondary">
-        💳 Reservar con Seña $50k ARS
+      <a href="https://paypal.me/vivevolandonomade/50000" target="_blank" class="btn btn-secondary btn-lg">
+        💳 Seña $50k ARS
       </a>
     </div>
   </section>
 
   <!-- Archivo Fotográfico -->
   <section id="archivo" class="archivo">
-    <div class="container">
-      <h2>Archivo Fotográfico Vive Volando Nómade</h2>
-      <p>Más de tres décadas de fotografía y vuelo: de corresponsal de guerra a San Pedro de Atacama
+    <h2><i class="bi bi-archive"></i> Archivo Fotográfico Vive Volando Nómade</h2>
+    <div class="aviso">
+      Más de tres décadas: corresponsal de guerra a San Pedro de Atacama, faros Chile desde aire, Antártida y ahora Junín. Base para futuros libros...[conversation_history:6]
+    </div>
+    <!-- Video Intro Junín -->
+    <div class="ratio ratio-16x9 mb-4 mx-auto" style="max-width: 800px;">
+      <iframe src="https://www.youtube.com/embed/t-zN5Auq70c" title="Arribamos a Junín HD" allowfullscreen loading="lazy"></iframe>[web:20]
+    </div>
+  </section>
+
+  <!-- Galería Videos -->
+  <section id="galeria">
+    <h2><i class="bi bi-images"></i> Galería 4K</h2>
+    <div class="galeria-grid">
+      <div class="galeria-item">
+        <iframe src="https://www.youtube.com/embed/wg1nS9s_7BE" title="Vuelo 4K Junín" allowfullscreen></iframe>
+        <p>Vuelo Baustismo Junín</p>[web:10]
+      </div>
+      <div class="galeria-item">
+        <iframe src="https://www.youtube.com/embed/yNbZlUx1cio" title="Evento Cruce 4K" allowfullscreen></iframe>
+        <p>El Cruce 2.5 Km</p>[web:11]
+      </div>
+      <div class="galeria-item">
+        <iframe src="https://www.youtube.com/embed/t-zN5Auq70c" title="Llegada Junín" allowfullscreen></iframe>
+        <p>Arribamos a Junín</p>[web:20]
+      </div>
+      <div class="galeria-item">
+        <iframe src="https://www.youtube.com/embed/4qEuwZbXkp4" title="Torno Parapente" allowfullscreen></iframe>
+        <p>Torno Parapente ARG</p>[web:16]
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="https://www.youtube.com/@vivevolandonomade/videos" target="_blank" class="btn btn-primary">
+        <i class="bi bi-youtube"></i> Más en YouTube
+      </a>[web:14]
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <h4><i class="bi bi-geo-alt"></i> Parque Natural Laguna de Gómez, Junín – Asociación Parapente Junín</h4>[conversation_history:6]
+    <p>📧 <a href="mailto:info@vivevolandonomade.com">info@vivevolandonomade.com</a> | 
+       📱 <a href="https://wa.me/541144027193" target="_blank">WhatsApp +54 11 4402-7193</a></p>
+    <p>&copy; 2026 Vive Volando Nómade. Todos los vuelos seguros.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
 
         
