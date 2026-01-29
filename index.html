@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal de Reservas - Vive Volando Nómade</title>
-  <meta name="description" content="Vuelos paramotor Junín 8K $100k ARS, eventos audiovisuales $200k. Laguna de Gómez, seguridad #1.">
+  <meta name="description" content="Vuelos paramotor Junín 8K $100k ARS, eventos $200k. Fotos aéreas Laguna de Gómez.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     body { background-color: #111; color: #eee; font-family: Arial, sans-serif; }
     header { padding: 2rem; text-align: center; background: #000; border-bottom: 4px solid #ff0000; }
     nav { background: #000; padding: 0.5rem; text-align: center; }
-    nav a { color: #00ff66; margin: 0 15px; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+    nav a { color: #00ff66; margin: 0 12px; text-decoration: none; font-weight: bold; transition: color 0.3s; }
     nav a:hover { color: #fff; }
     section { padding: 2rem; }
     .btn-primary { background-color: #007bff; border: none; margin: 5px; }
@@ -20,32 +20,30 @@
     .aviso { background:#222; padding:15px; border-left:4px solid #00ff66; color:#00ff66; margin-bottom:20px; border-radius: 0 8px 8px 0; }
     .archivo-list, .galeria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
     .archivo-item, .galeria-item { background: #222; padding: 1rem; border-radius: 8px; text-align: center; }
-    .galeria-item iframe, .galeria-item img { width: 100%; height: 200px; border-radius: 8px; object-fit: cover; }
+    .galeria-item img, .galeria-item iframe { width: 100%; height: 200px; border-radius: 8px; object-fit: cover; }
     .ratio iframe { border-radius: 8px; }
     footer { background: #000; padding: 2rem; text-align: center; border-top: 4px solid #ff0000; margin-top: 3rem; }
-    @media (max-width: 768px) { .galeria-item iframe, .galeria-item img { height: 150px; } nav a { margin: 0 10px; font-size: 0.9rem; } }
+    @media (max-width: 768px) { 
+      .galeria-item img, .galeria-item iframe { height: 150px; } 
+      nav a { margin: 0 8px; font-size: 0.9rem; } 
+    }
   </style>
 </head>
 <body>
 
 <!-- Intro / Hero -->
 <section id="intro" style="text-align:center; padding:3rem; background:#000;">
-  <img src="contenido/fotos/logo.png" alt="Logo Vive Volando Nómade" style="max-width:150px; margin-bottom:20px;">
+  <img src="sitio/images/logo.png" alt="Logo Vive Volando Nómade" style="max-width:200px; margin-bottom:20px;">
   <h1>Vive Volando Nómade</h1>
-  <p>Viaja en Motor Home por Sudamérica, vuelos en Paramotor y fotografía aérea junto a Haroldo Horta y sus dos perros, Osa e Inti. Compartimos desde el aire y desde la ruta las historias que encontramos en el camino.
-Más de 30 años de fotografía y vuelo: de corresponsal de guerra, en Nicaragua y Colombia, luego recorriendo Chile de norte a sur, desde San Pedro de Atacama, a la Antártica, dejando tomas únicas desde el aire. 
-El año pasado jubilé y decidí vender todo y transformar mi camioneta en una casa estudio rodante, actualmente en Junín Argentina.
-¡Acompáñame en este viaje de vuelo y fotografía!
-.</p>
+  <p>Más de tres décadas de vuelo y fotografía. Experiencias aéreas, archivo vivo y comunidad audiovisual.</p>
   <p><em>Canal oficial en YouTube con contenidos exclusivos, detrás de cámaras y series en 8K.</em></p>
 </section>
 
 <header>
-  <h1><i class="🪂"></i> Reservas de Vuelo y Eventos</h1>
-  <p>Nadie queda indiferente al vuelo y menos si es en 8k y en la Laguna de Gómez, Junín.</p>
+  <h1><i class="bi bi-airplane-engines-fill"></i> Reservas de Vuelo y Eventos</h1>
+  <p>Experiencias únicas en paramotor con seguridad, 8K y Laguna de Gómez, Junín.</p>
 </header>
 
-<!-- Menú -->
 <nav>
   <a href="#vuelo">🪂 Vuelo</a>
   <a href="#evento">📸 Evento</a>
@@ -56,27 +54,101 @@ El año pasado jubilé y decidí vender todo y transformar mi camioneta en una c
 
 <main class="container">
 
-<!-- Vuelo -->
-<section id="vuelo">
-  <h2>🪂 Vuelo Ultraligero / Regalo</h2>
-  <p class="aviso">⚠️ Sujeto a clima. Mañana 6:00–9:30 o tarde 18–21h. Seguridad #1 + registro 8K inolvidable.<br><br>💰 <strong>$100.000 ARS</strong> (vigencia 3 meses).</p>
-  <div class="ratio ratio-16x9 mb-4 mx-auto" style="max-width:800px;">
-    <iframe src="https://www.youtube.com/embed/wg1nS9s_7BE" title="Vuelo Bautismo Junín 4K" allowfullscreen loading="lazy"></iframe>
-  </div>
-  <div class="text-center">
-    <a href="https://forms.gle/4g32Y7f6BNPqMmdG9" target="_blank" class="btn btn-primary btn-lg">✍️ Formulario Vuelo / Regalo</a>
-    <a href="https://paypal.me/vivevolandonomade/20000" target="_blank" class="btn btn-secondary btn-lg">🛒 Seña $20k ARS</a>
-  </div>
-</section>
+  <!-- Vuelo / Regalo -->
+  <section id="vuelo">
+    <h2>🪂 Vuelo Ultraligero / Regalo</h2>
+    <p class="aviso">⚠️ Sujeto a clima. Mañana 6:00–9:30 o tarde 18-21h.<br>Seguridad #1 + registro 8K inolvidable.<br><br>💰 <strong>$100.000 ARS</strong> (vigencia 3 meses).</p>
+    <div class="ratio ratio-16x9 mb-4 mx-auto" style="max-width:800px;">
+      <iframe src="https://www.youtube.com/embed/wg1nS9s_7BE" title="Vuelo Bautismo Junín 4K" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="text-center">
+      <a href="https://forms.gle/4g32Y7f6BNPqMmdG9" target="_blank" class="btn btn-primary btn-lg">✍️ Formulario Vuelo / Regalo</a>
+      <a href="https://paypal.me/vivevolandonomade/20000" target="_blank" class="btn btn-secondary btn-lg">🛒 Seña $20k ARS</a>
+    </div>
+  </section>
 
-<!-- Evento -->
-<section id="evento">
-  <h2>📸 Evento Audiovisual</h2>
-  <p class="aviso">⚠️ Consulta por las características de tu evento personalizado en el formulario abajo.<br><br>💰 <strong>$200.000 ARS</strong> (cobertura + edición pro).</p>
-  <div class="ratio ratio-16x9 mb-4 mx-auto" style="max-width:800px;">
-    <iframe src="https://www.youtube.com/embed/yNbZlUx1cio" title="Evento Cruce 4K" allowfullscreen loading="lazy"></iframe>
+  <!-- Evento -->
+  <section id="evento">
+    <h2>📸 Evento Audiovisual</h2>
+    <p class="aviso">Consulta por tu evento personalizado.<br><br>💰 <strong>$200.000 ARS</strong> (cobertura + edición pro).</p>
+    <div class="ratio ratio-16x9 mb-4 mx-auto" style="max-width:800px;">
+      <iframe src="https://www.youtube.com/embed/yNbZlUx1cio" title="Evento Cruce 4K" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="text-center">
+      <a href="https://forms.gle/1zFJVcxempE4PLcy9" target="_blank" class="btn btn-primary btn-lg">✍️ Formulario Evento</a>
+      <a href="https://paypal.me/vivevolandonomade/50000" target="_blank" class="btn btn-secondary btn-lg">💳 Seña $50k ARS</a>
+    </div>
+  </section>
+
+  <!-- Archivo -->
+  <section id="archivo">
+    <h2>📷 Archivo Fotográfico</h2>
+    <p class="aviso">Más de tres décadas: base para libros y exclusivos YouTube.</p>
+    <div class="archivo-list">
+      <div class="archivo-item"><strong>📰 Corresponsal de Guerra</strong><p>Nicaragua, Colombia, Chile</p></div>
+      <div class="archivo-item"><strong>🏜️ San Pedro de Atacama</strong><p>Chile</p></div>
+      <div class="archivo-item"><strong>🗼 Faros desde el Aire</strong><p>Chile</p></div>
+      <div class="archivo-item"><strong>⛰️ Cajón del Maipo</strong><p>Chile</p></div>
+      <div class="archivo-item"><strong>❄️ Antártica y Patagonia</strong><p>Chile</p></div>
+      <div class="archivo-item"><strong>🌾 Junín y Saladillo</strong><p>Argentina</p></div>
+      <div class="archivo-item"><strong>🏛️ Cusco, Lima, Nazca</strong><p>Perú</p></div>
+      <div class="archivo-item"><strong>🧂 Salar de Uyuni</strong><p>Bolivia</p></div>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <section id="galeria-videos">
+    <h2>🎥 Galería Videos 4K</h2>
+    <div class="galeria-grid">
+      <div class="galeria-item"><iframe src="https://www.youtube.com/embed/wg1nS9s_7BE" title="Vuelo Junín" allowfullscreen loading="lazy"></iframe></div>
+      <div class="galeria-item"><iframe src="https://www.youtube.com/embed/yNbZlUx1cio" title="Evento Cruce" allowfullscreen loading="lazy"></iframe></div>
+      <div class="galeria-item"><iframe src="https://www.youtube.com/embed/t-zN5Auq70c" title="Junín HD" allowfullscreen loading="lazy"></iframe></div>
+      <div class="galeria-item"><iframe src="https://www.youtube.com/embed/4qEuwZbXkp4" title="Parapente ARG" allowfullscreen loading="lazy"></iframe></div>
+    </div>
+  </section>
+
+  <!-- Fotos: Tus 13 imgs SIN captions -->
+  <section id="galeria-fotos">
+    <h2>🖼️ Galería Fotos Aéreas</h2>
+    <div class="galeria-grid">
+      <div class="galeria-item"><img src="fotos/1.jpg" alt="Foto aérea Vive Volando Nómade 1" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/2.jpg" alt="Foto aérea Vive Volando Nómade 2" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/3.jpg" alt="Foto aérea Vive Volando Nómade 3" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/4.jpg" alt="Foto aérea Vive Volando Nómade 4" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/5.jpg" alt="Foto aérea Vive Volando Nómade 5" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/6.jpg" alt="Foto aérea Vive Volando Nómade 6" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/7.jpg" alt="Foto aérea Vive Volando Nómade 7" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/8.jpg" alt="Foto aérea Vive Volando Nómade 8" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/9.jpg" alt="Foto aérea Vive Volando Nómade 9" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/10.jpg" alt="Foto aérea Vive Volando Nómade 10" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/11.jpg" alt="Foto aérea Vive Volando Nómade 11" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/12.jpg" alt="Foto aérea Vive Volando Nómade 12" loading="lazy"></div>
+      <div class="galeria-item"><img src="fotos/13.jpg" alt="Foto aérea Vive Volando Nómade 13" loading="lazy"></div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="https://www.youtube.com/@vivevolandonomade/videos" target="_blank" class="btn btn-primary btn-lg">
+        <i class="bi bi-youtube"></i> Más en YouTube - Exclusivos
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <h4><i class="bi bi-geo-alt"></i> Parque Natural Laguna de Gómez, Junín – Asociación Parapente Junín</h4>
+    <p>📧 <a href="mailto:vivevolandonomade@gmail.com">vivevolandonomade@gmail.com</a> | 
+       📱 <a href="https://wa.me/541144027193" target="_blank">WhatsApp +54 11 4402-7193</a></p>
+    <p>&copy; 2026 Vive Volando Nómade. Todos los vuelos seguros. 🪂</p>
   </div>
-  <div class="text-center">
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
 
   </main>
 
