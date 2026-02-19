@@ -20,7 +20,23 @@
         background: radial-gradient(circle at top, #1a1a1a 0%, #050505 100%);
         color: #eee; 
         font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-        scroll-behavior: smooth;
+        scroll-behavior: smooth; <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
+
+<script>
+    // Inicializar el zoom de fotos
+    const lightbox = GLightbox({
+        selector: '.galeria-item img',
+        touchNavigation: true,
+        loop: true
+    });
+
+    // Cambiar src de imágenes para que GLightbox las reconozca (truco rápido)
+    document.querySelectorAll('.galeria-item img').forEach(img => {
+        img.parentElement.classList.add('glightbox');
+        img.parentElement.setAttribute('href', img.src);
+    });
+</script>
     }
 
     /* Header con más estilo */
