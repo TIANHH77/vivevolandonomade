@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vive Volando Nómade | Atlas & Desafío Junín</title>
+    <title>Vive Volando Nómade | Legado & Desafío</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
@@ -13,7 +13,7 @@
         :root { --accent: #00ff66; --info-blue: #00d4ff; --dark: #050505; }
         body { background: var(--dark); color: #eee; font-family: 'Inter', sans-serif; }
 
-        /* Logo Redondo */
+        /* Estilo Logo */
         .logo-round {
             width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
             border: 3px solid var(--accent); box-shadow: 0 0 25px rgba(0, 255, 102, 0.4);
@@ -23,30 +23,27 @@
         /* Secciones */
         section { padding: 4rem 1rem; border-bottom: 1px solid #222; }
 
-        /* PORTAL ATLAS (Estilo Radar) */
+        /* PORTAL ATLAS (Actualizado) */
         .atlas-portal {
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('fotos/desafio-junin (1).webp');
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), url('fotos/desafio-junin (1).webp');
             background-size: cover; background-position: center;
             border: 2px solid var(--info-blue); border-radius: 30px; padding: 4rem 2rem;
-            position: relative; overflow: hidden;
-        }
-        .globe-icon {
-            font-size: 6rem; color: var(--info-blue);
-            filter: drop-shadow(0 0 20px var(--info-blue));
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
+            text-align: center;
         }
         .btn-atlas {
             background: transparent; border: 2px solid var(--info-blue);
             color: var(--info-blue); padding: 15px 40px; font-weight: bold;
-            border-radius: 50px; text-decoration: none; font-size: 1.4rem;
-            transition: 0.4s; text-transform: uppercase;
+            border-radius: 50px; text-decoration: none; font-size: 1.2rem;
+            transition: 0.4s; text-transform: uppercase; display: inline-block;
         }
         .btn-atlas:hover { background: var(--info-blue); color: #000; box-shadow: 0 0 40px var(--info-blue); }
+
+        /* Tarjetas de Video */
+        .video-card {
+            background: #111; border-radius: 20px; overflow: hidden;
+            border: 1px solid #333; transition: transform 0.3s;
+        }
+        .video-card:hover { transform: translateY(-5px); border-color: var(--accent); }
 
         /* Galería Optimizada */
         .galeria-grid {
@@ -57,7 +54,8 @@
             background: #111; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden;
             border: 1px solid #333; cursor: pointer;
         }
-        .galeria-item img { width: 100%; height: 100%; object-fit: cover; }
+        .galeria-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s; }
+        .galeria-item img.loaded { opacity: 1; }
         
         .btn-load-more {
             background: var(--accent); color: #000; border: none;
@@ -69,54 +67,70 @@
 
 <header class="text-center py-5">
     <img src="fotos/logo.png" alt="Logo" class="logo-round">
-    <h1 class="display-5 fw-bold">VIVE VOLANDO <span style="color:var(--accent)">NÓMADE</span></h1>
+    <h1 class="display-5 fw-bold text-uppercase tracking-wider">Vive Volando <span style="color:var(--accent)">Nómade</span></h1>
 </header>
 
 <main class="container">
 
-    <section id="archivo-atlas" class="text-center">
+    <section id="atlas" class="text-center">
         <div class="atlas-portal">
-            <div class="mb-4"><i class="bi bi-globe-americas globe-icon"></i></div>
-            <h2 class="display-5 fw-bold mb-4">ARCHIVO ESTRATÉGICO SUR DAO</h2>
-            <p class="lead text-secondary mb-5">Accede al legado fotografico y Atlas Interactivo.</p>
+            <i class="bi bi-globe-americas display-2 text-info mb-4"></i>
+            <h2 class="display-6 fw-bold mb-4">CENTRO DE DATOS Y MEMORIA</h2>
             <a href="https://haroldohorta.github.io/atlas/" target="_blank" class="btn-atlas">
-                🌍 ACCEDER AL ATLAS INTERACTIVO 🌍
+                <i class="bi bi-shield-lock-fill"></i> Acceder al legado histórico fotográfico y atlas interactivo
             </a>
         </div>
     </section>
 
-    <section id="servicios">
+    <section id="videos">
+        <h2 class="display-6 fw-bold mb-5"><i class="bi bi-play-circle-fill text-danger"></i> Experiencia de Vuelo</h2>
         <div class="row g-4">
-            <div class="col-md-6">
-                <div class="p-4 border border-secondary rounded-4 h-100">
-                    <h3>🪂 Vuelos de Bautismo</h3>
-                    <p class="text-success fw-bold">$100.000 ARS</p>
-                    <a href="https://forms.gle/4g32Y7f6BNPqMmdG9" target="_blank" class="btn btn-outline-success w-100">Reservar Vuelo</a>
+            <div class="col-md-4">
+                <div class="video-card">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/PUkKaFtu4pc" title="El Señor de los Barigüiris" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-3">
+                        <h5 class="mb-0">El Señor de los Barigüiris</h5>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="p-4 border border-secondary rounded-4 h-100">
-                    <h3>📸 Eventos 8K</h3>
-                    <p class="text-info fw-bold">$200.000 ARS</p>
-                    <a href="https://forms.gle/1zFJVcxempE4PLcy9" target="_blank" class="btn btn-outline-info w-100">Consultar Evento</a>
+            <div class="col-md-4">
+                <div class="video-card">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/wTcXNI1GT5s" title="Vuelo con Amigos" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-3">
+                        <h5 class="mb-0">Vuelo con amigos</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="video-card">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/wg1nS9s_7BE" title="Vuelo Bautismo" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-3">
+                        <h5 class="mb-0">Vuelo Bautismo 4K</h5>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="galeria">
-        <h2 class="mb-4">🖼️ Desafío Junín 2026</h2>
+        <h2 class="display-6 fw-bold mb-4">🖼️ Desafío Junín 2026</h2>
         <div class="galeria-grid" id="gallery-container">
             </div>
         <div class="text-center mt-4">
-            <button id="load-more" class="btn-load-more">Ver más fotos del Desafío</button>
+            <button id="load-more" class="btn-load-more">Ver más fotos</button>
         </div>
     </section>
 
 </main>
 
 <footer class="py-5 text-center text-secondary opacity-50">
-    <p>© 2026 Vive Volando Nómade | +54 11 4402-7193</p>
+    <p>© 2026 Vive Volando Nómade | Junín, Argentina</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
@@ -124,45 +138,38 @@
     const container = document.getElementById('gallery-container');
     const loadMoreBtn = document.getElementById('load-more');
     
-    // Lista total de las 88 fotos en el orden deseado
-    const todasLasFotos = [78,79,80,81,82,83,84,85,86,87,88, ...Array.from({length: 77}, (_, i) => i + 1)];
+    // Lista total de las 88 fotos
+    const fotosJunin = [78,79,80,81,82,83,84,85,86,87,88, ...Array.from({length: 77}, (_, i) => i + 1)];
     
-    let fotosMostradas = 0;
-    const batchSize = 12; // Cuántas fotos cargar por vez
+    let currentBatch = 0;
+    const batchSize = 12;
 
-    function cargarFotos() {
-        const limite = Math.min(fotosMostradas + batchSize, todasLasFotos.length);
+    function cargarMas() {
+        const start = currentBatch * batchSize;
+        const end = Math.min(start + batchSize, fotosJunin.length);
         
-        for (let i = fotosMostradas; i < limite; i++) {
-            const num = todasLasFotos[i];
-            const item = document.createElement('div');
-            item.className = 'galeria-item glightbox';
-            item.setAttribute('data-href', `fotos/desafio-junin (${num}).webp`);
-            item.innerHTML = `<img src="fotos/desafio-junin (${num}).webp" alt="Junín ${num}" loading="lazy">`;
-            container.appendChild(item);
+        for (let i = start; i < end; i++) {
+            const num = fotosJunin[i];
+            const div = document.createElement('div');
+            div.className = 'galeria-item glightbox';
+            div.setAttribute('data-href', `fotos/desafio-junin (${num}).webp`);
+            div.innerHTML = `<img src="fotos/desafio-junin (${num}).webp" alt="Vuelo ${num}" loading="lazy" onload="this.classList.add('loaded')">`;
+            container.appendChild(div);
         }
         
-        fotosMostradas = limite;
+        currentBatch++;
+        if (end >= fotosJunin.length) loadMoreBtn.style.display = 'none';
         
-        // Actualizar Lightbox para que reconozca las nuevas
-        const lightbox = GLightbox({ selector: '.glightbox' });
-
-        // Ocultar botón si ya no hay más
-        if (fotosMostradas >= todasLasFotos.length) {
-            loadMoreBtn.style.display = 'none';
-        }
+        // Refrescar Lightbox
+        GLightbox({ selector: '.glightbox' });
     }
 
-    // Carga inicial
-    cargarFotos();
-
-    // Evento botón
-    loadMoreBtn.addEventListener('click', cargarFotos);
+    // Primera carga
+    cargarMas();
+    loadMoreBtn.addEventListener('click', cargarMas);
 </script>
 </body>
 </html>
-
-
   
 
 
