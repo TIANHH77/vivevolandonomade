@@ -3,57 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vive Volando Nómade | Reservas y Legado</title>
+    <title>Vive Volando Nómade | Vuelos, Eventos 8K y Legado</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css">
     
     <style>
-        :root { --accent: #00ff66; --info-blue: #00d4ff; --dark: #050505; --whatsapp: #25d366; }
-        body { background: var(--dark); color: #eee; font-family: 'Inter', sans-serif; }
-
-        .logo-round {
-            width: 140px; height: 140px; border-radius: 50%; object-fit: cover;
-            border: 3px solid var(--accent); box-shadow: 0 0 25px rgba(0, 255, 102, 0.4);
-            margin-bottom: 1rem; background: #000;
+        :root { 
+            --accent: #00ff66; 
+            --info-blue: #00d4ff; 
+            --dark: #050505; 
+            --whatsapp: #25d366; 
+            --bg-gradient: radial-gradient(circle at top, #111111, var(--dark));
+        }
+        
+        body { 
+            background: var(--bg-gradient); 
+            background-attachment: fixed;
+            color: #eee; 
+            font-family: 'Inter', sans-serif; 
         }
 
-        section { padding: 4rem 1rem; border-bottom: 1px solid #222; }
+        /* Cabecera y Logo */
+        .logo-round {
+            width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+            border: 3px solid var(--accent); 
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.3);
+            margin-bottom: 1rem; background: #000;
+            transition: transform 0.3s ease;
+        }
+        .logo-round:hover { transform: scale(1.05); }
+
+        section { padding: 4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
         /* Botones Especiales */
-        .btn-action { border-radius: 50px; font-weight: bold; padding: 12px 25px; text-transform: uppercase; transition: 0.3s; }
+        .btn-action { 
+            border-radius: 50px; font-weight: bold; padding: 12px 25px; 
+            text-transform: uppercase; transition: all 0.3s ease; letter-spacing: 0.5px;
+        }
         .btn-whatsapp { background: var(--whatsapp); color: white; border: none; }
-        .btn-whatsapp:hover { background: #1da851; color: white; transform: scale(1.05); }
+        .btn-whatsapp:hover { background: #1da851; color: white; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); }
         
+        /* Tarjetas de Servicios */
         .card-service {
-            background: rgba(255,255,255,0.03); border: 1px solid #333;
-            border-radius: 20px; padding: 2rem; transition: 0.3s; height: 100%;
+            background: rgba(255,255,255,0.02); 
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px; padding: 2.5rem; transition: 0.4s; height: 100%;
+            backdrop-filter: blur(10px);
         }
-        .card-service:hover { border-color: var(--accent); background: rgba(255,255,255,0.05); }
-
-        /* Estilo Atlas */
-        .atlas-box {
-            border: 2px solid var(--info-blue); border-radius: 20px; padding: 3rem;
-            background: linear-gradient(45deg, #000, #0a0a0a);
+        .card-service:hover { 
+            border-color: var(--accent); 
+            background: rgba(0, 255, 102, 0.05); 
+            transform: translateY(-5px);
         }
 
-        /* Galería */
-        .galeria-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
-        .galeria-item { background: #111; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; border: 1px solid #333; }
-        .galeria-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: 0.5s; }
-        .galeria-item img.loaded { opacity: 1; }
+        /* Estilo Atlas Embebido */
+        .atlas-container {
+            border: 2px solid var(--info-blue); 
+            border-radius: 20px; 
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+            height: 75vh; /* Ocupa el 75% del alto de la pantalla */
+            width: 100%;
+            background: #000;
+        }
+
+        /* Estilo de los videos */
+        .video-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: border-color 0.3s ease;
+        }
+        .video-card:hover {
+            border-color: var(--accent);
+        }
     </style>
 </head>
 <body>
 
 <header class="text-center py-5">
-    <img src="fotos/logo.png" alt="Logo" class="logo-round">
-    <h1 class="display-5 fw-bold text-uppercase">Vive Volando <span style="color:var(--accent)">Nómade</span></h1>
-    <div class="mt-3">
-        <a href="https://wa.me/541144027193" target="_blank" class="btn btn-action btn-whatsapp">
-            <i class="bi bi-whatsapp"></i> Contactar por WhatsApp
-        </a>
+    <div class="container">
+        <img src="fotos/logo.png" alt="Logo Vive Volando Nómade" class="logo-round">
+        <h1 class="display-4 fw-bold text-uppercase mt-2">Vive Volando <span style="color:var(--accent)">Nómade</span></h1>
+        <p class="lead text-secondary mb-4">Fotografía Aérea, Eventos 8K y Vuelos en Paramotor</p>
+        <div class="mt-3">
+            <a href="https://wa.me/541144027193" target="_blank" class="btn btn-action btn-whatsapp">
+                <i class="bi bi-whatsapp"></i> Contactar por WhatsApp
+            </a>
+        </div>
     </div>
 </header>
 
@@ -62,12 +101,12 @@
     <section id="reservas">
         <div class="row g-4">
             <div class="col-md-6">
-                <div class="card-service">
+                <div class="card-service text-center text-md-start">
                     <h3 class="fw-bold mb-3"><i class="bi bi-wind text-success"></i> Vuelo en Paramotor</h3>
                     <p class="display-6 fw-bold text-success mb-2">$90.000 ARS</p>
-                    <p class="text-secondary small mb-4">Incluye registro en 8K. Vive la Laguna de Gómez desde el aire.</p>
+                    <p class="text-secondary small mb-4">Incluye registro en 8K. Vive la Laguna de Gómez desde el aire con la máxima seguridad y calidad visual.</p>
                     
-                    <div class="d-grid gap-2">
+                    <div class="d-grid gap-3">
                         <a href="https://forms.gle/4g32Y7f6BNPqMmdG9" target="_blank" class="btn btn-action btn-success">
                             <i class="bi bi-calendar-check"></i> Agendar o Regalar Vuelo
                         </a>
@@ -79,17 +118,17 @@
             </div>
 
             <div class="col-md-6">
-                <div class="card-service">
+                <div class="card-service text-center text-md-start">
                     <h3 class="fw-bold mb-3"><i class="bi bi-camera-reels text-info"></i> Cobertura Eventos 8K</h3>
                     <p class="display-6 fw-bold text-info mb-2">$200.000 ARS</p>
-                    <p class="text-secondary small mb-4">Servicio profesional de video y fotografía aérea para tu evento.</p>
+                    <p class="text-secondary small mb-4">Servicio profesional de video y fotografía aérea (Drones FPV y Cine) para tu evento deportivo o corporativo.</p>
                     
-                    <div class="d-grid gap-2">
+                    <div class="d-grid gap-3">
                         <a href="https://forms.gle/1zFJVcxempE4PLcy9" target="_blank" class="btn btn-action btn-info text-dark">
                             <i class="bi bi-megaphone"></i> Agendar Evento
                         </a>
                         <a href="https://paypal.me/vivevolandonomade/50000" target="_blank" class="btn btn-action btn-outline-light">
-                            <i class="bi bi-shield-check"></i> Pagar Cobertura 8K ($50k)
+                            <i class="bi bi-shield-check"></i> Pagar Cobertura ($50k)
                         </a>
                     </div>
                 </div>
@@ -97,65 +136,92 @@
         </div>
     </section>
 
-    <section id="atlas" class="text-center">
-        <div class="atlas-box">
-            <i class="bi bi-globe-americas display-3 text-info mb-4"></i>
-            <h2 class="h1 fw-bold mb-4">PORTAL DEL LEGADO</h2>
-            <a href="https://haroldohorta.github.io/atlas/" target="_blank" class="text-info fs-4 text-decoration-none fw-bold">
-                🌍 ACCEDER AL LEGADO HISTÓRICO FOTOGRÁFICO Y ATLAS INTERACTIVO 🌍
+    <section id="atlas">
+        <div class="text-center mb-4">
+            <h2 class="h1 fw-bold"><i class="bi bi-globe-americas text-info"></i> Portal del Legado Histórico</h2>
+            <p class="text-secondary">Explora el Atlas interactivo y el archivo fotográfico de Haroldo Horta directamente desde aquí.</p>
+        </div>
+        
+        <div class="atlas-container">
+            <iframe src="https://haroldohorta.github.io/atlas/" width="100%" height="100%" style="border:none;" allowfullscreen></iframe>
+        </div>
+        
+        <div class="text-center mt-3">
+            <a href="https://haroldohorta.github.io/atlas/" target="_blank" class="text-info small text-decoration-none">
+                <i class="bi bi-box-arrow-up-right"></i> Abrir Atlas en pantalla completa
             </a>
         </div>
     </section>
 
-    <section id="videos">
-        <h2 class="fw-bold mb-4">🎥 Experiencia de Vuelo</h2>
+   <section id="videos">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold"><i class="bi bi-youtube text-danger"></i> Top 10 Experiencias de Vuelo</h2>
+            <p class="text-secondary">Los mejores registros aéreos y eventos capturados en máxima calidad.</p>
+        </div>
+
         <div class="row g-4">
-            <div class="col-md-4"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/PUkKaFtu4pc" allowfullscreen></iframe></div></div>
-            <div class="col-md-4"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wTcXNI1GT5s" allowfullscreen></iframe></div></div>
-            <div class="col-md-4"><div class="ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/wg1nS9s_7BE" allowfullscreen></iframe></div></div>
+            <div class="col-12 col-lg-8 offset-lg-2 mb-3">
+                <div class="video-card ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/UQtFzlhHXLM" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/TA_C7BT0cjc" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/Sapdlg1mKGs" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/Ln8frUxqXJ8" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/g0Q4C2ibuBI" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/wTcXNI1GT5s" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/wg1nS9s_7BE" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/MQAn3NUIHe0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/TTvFHCv7y1o" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="video-card ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/C0irUSL83ZU" allowfullscreen></iframe>
+                </div>
+            </div>
+
         </div>
     </section>
-
-    <section id="galeria">
-        <h2 class="fw-bold mb-4">🖼️ Desafío Junín 2026</h2>
-        <div class="galeria-grid" id="gallery-container"></div>
-        <div class="text-center mt-4">
-            <button id="load-more" class="btn btn-action btn-outline-success">Ver más fotos</button>
-        </div>
-    </section>
-
 </main>
 
-<footer class="py-5 text-center text-secondary">
-    <p>📱 +54 11 4402-7193 | 📧 vivevolandonomade@gmail.com</p>
-    <p>&copy; 2026 Vive Volando Nómade. Junín, Argentina.</p>
+<footer class="py-5 mt-4 text-center text-secondary border-top border-dark">
+    <p class="mb-2"><i class="bi bi-telephone"></i> +54 11 4402-7193 | <i class="bi bi-envelope"></i> vivevolandonomade@gmail.com</p>
+    <p class="small">&copy; 2026 Vive Volando Nómade. Junín, Argentina.</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
-<script>
-    const container = document.getElementById('gallery-container');
-    const loadMoreBtn = document.getElementById('load-more');
-    const fotos = [78,79,80,81,82,83,84,85,86,87,88, ...Array.from({length: 77}, (_, i) => i + 1)];
-    
-    let batch = 0;
-    const size = 12;
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    function load() {
-        const start = batch * size;
-        const end = Math.min(start + size, fotos.length);
-        for (let i = start; i < end; i++) {
-            const div = document.createElement('div');
-            div.className = 'galeria-item glightbox';
-            div.setAttribute('data-href', `fotos/desafio-junin (${fotos[i]}).webp`);
-            div.innerHTML = `<img src="fotos/desafio-junin (${fotos[i]}).webp" loading="lazy" onload="this.classList.add('loaded')">`;
-            container.appendChild(div);
-        }
-        batch++;
-        if (end >= fotos.length) loadMoreBtn.style.display = 'none';
-        GLightbox({ selector: '.glightbox' });
-    }
-    load();
-    loadMoreBtn.addEventListener('click', load);
-</script>
 </body>
 </html>
