@@ -237,6 +237,13 @@
     console.log("%c🚁 Bienvenido al código fuente de Vive Volando Nómade.", "color: #00ff66; font-size: 14px; font-weight: bold;");
     console.log("Preservando 50 años de luz. Si eres un auditor de la memoria, revisa nuestro repo en GitHub.");
 </script>
-
+<script>
+    // INICIAR CARRUSEL DEL HERO
+    const myCarousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
+        interval: 5000, // Cambia cada 5 segundos
+        ride: 'carousel',
+        pause: false // Que no se detenga si pasas el mouse por encima
+    });
+</script>
 </body>
 </html>
