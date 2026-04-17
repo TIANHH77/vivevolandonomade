@@ -22,20 +22,52 @@
             background-attachment: fixed;
             color: #eee; 
             font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
+        }
+
+        /* Estilos del Hero Renovado */
+        .hero-header {
+            position: relative;
+            background-image: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.2)), url('fotos/Peine-Flamencos-2007060013.webp');
+            background-size: cover;
+            background-position: 60% 30%;
+            background-attachment: fixed;
+            padding: 8rem 0 6rem 0 !important;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-title {
+            font-size: 5.5rem;
+            font-weight: 900;
+            line-height: 0.85;
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: -3px;
+        }
+
+        .text-nomade-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
         .logo-round {
-            width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
-            border: 3px solid var(--accent); 
-            box-shadow: 0 0 30px rgba(0, 255, 102, 0.3);
-            margin-bottom: 1rem; background: #000;
-            transition: translateY(-70px), translatex(-70px) 0.3s ease;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.4);
+            background: #000;
+            transition: transform 0.3s ease;
         }
 
+        /* Resto de componentes */
         section { padding: 4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
         .btn-action { 
-            border-radius: 50px; font-weight: bold; padding: 12px 25px; 
+            border-radius: 50px; font-weight: bold; padding: 12px 30px; 
             text-transform: uppercase; transition: all 0.3s ease; letter-spacing: 0.5px;
         }
         .btn-whatsapp { background: var(--whatsapp); color: white; border: none; }
@@ -47,31 +79,18 @@
             border-radius: 20px; padding: 2.5rem; transition: 0.4s; height: 100%;
             backdrop-filter: blur(10px);
         }
-        .card-service:hover { 
-            border-color: var(--accent); 
-            background: rgba(0, 255, 102, 0.05); 
-            transform: translateY(-5px);
-        }
+        .card-service:hover { border-color: var(--accent); background: rgba(0, 255, 102, 0.05); transform: translateY(-5px); }
 
         .atlas-container {
-            border: 2px solid var(--info-blue); 
-            border-radius: 20px; 
-            overflow: hidden;
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
-            height: 75vh; 
-            width: 100%;
-            background: #000;
+            border: 2px solid var(--info-blue); border-radius: 20px; overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15); height: 75vh; width: 100%; background: #000;
         }
 
         .video-card {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: border-color 0.3s ease;
+            border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.3s ease;
         }
 
-        /* Botón Flotante GitHub */
         .github-link-fixed {
             position: fixed; right: -110px; top: 50%; transform: translateY(-50%);
             background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
@@ -80,16 +99,10 @@
             transition: all 0.4s ease; text-decoration: none; display: flex; align-items: center; gap: 15px; color: #fff;
         }
         .github-link-fixed:hover { right: 0; background: rgba(255, 255, 255, 0.1); border-color: var(--accent); color: var(--accent); }
-    /* Cabecera con fondo de Atacama */
-        .hero-header {
-            position: relative;
-            background-image: linear-gradient(to bottom, rgba(5,5,5,0.6), rgba(5,5,5,0.95)), url('fotos/Peine-Flamencos-2007060013.webp');
-            background-size: cover;
-            background-position: 60% 30%;
-            background-attachment: fixed;
-            padding-top: 8rem !important; 
-            padding-bottom: 6rem !important;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3.5rem; }
+            .logo-round { width: 80px; height: 80px; }
         }
     </style>
 </head>
@@ -100,19 +113,30 @@
     <span>Proyecto Surdao</span>
 </a>
 
-<header class="hero-header text-center">
+<header class="hero-header">
     <div class="container">
-        <img src="fotos/logo.png" alt="Logo" class="logo-round">
-        <h1 class="display-4 fw-bold text-uppercase mt-2">Vive Volando <span style="color:var(--accent)">Nómade</span></h1>
-        <p class="lead text-secondary mb-4">Producción Audiovisual, Drones FPV y Gestión de Archivo Histórico</p>
-        <div class="mt-3">
-            <a href="https://wa.me/541144027193" target="_blank" class="btn btn-action btn-whatsapp">
-                <i class="bi bi-whatsapp"></i> Contactar por WhatsApp
-            </a>
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="hero-title">VIVE</h1>
+                <h1 class="hero-title">VOLANDO</h1>
+                <div class="text-nomade-container">
+                    <h1 class="hero-title" style="color: var(--accent);">NOMADE</h1>
+                    <img src="fotos/logo.png" alt="Logo" class="logo-round">
+                </div>
+                
+                <p class="lead text-secondary mt-4 mb-4" style="max-width: 550px; font-weight: 500;">
+                    Producción Audiovisual, Drones FPV y Gestión de Archivo Histórico.
+                </p>
+                
+                <div class="mt-2">
+                    <a href="https://wa.me/541144027193" target="_blank" class="btn btn-action btn-whatsapp">
+                        <i class="bi bi-whatsapp"></i> Contactar ahora
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </header>
-
 <main class="container">
 
     <section id="servicios">
