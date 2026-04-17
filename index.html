@@ -36,13 +36,24 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .hero-title {
+       .hero-title {
             font-size: 5.5rem;
             font-weight: 900;
             line-height: 0.85;
             text-transform: uppercase;
             margin: 0;
             letter-spacing: -3px;
+            color: #000; /* Letras en negro para el juego de sombras */
+            /* Efecto resplandor que imita al logo pero en blanco/gris para que resalte sobre el fondo oscuro */
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2), 
+                         0 0 30px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        /* Y para que NOMADE siga siendo el protagonista verde con su propio brillo: */
+        .text-nomade-container .hero-title {
+            color: var(--accent) !important;
+            text-shadow: 0 0 20px rgba(0, 255, 102, 0.5);
         }
 
         .text-nomade-container {
