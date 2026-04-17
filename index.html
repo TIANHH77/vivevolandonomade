@@ -125,8 +125,25 @@
     <span>Proyecto Surdao</span>
 </a>
 
-<header class="hero-header">
-    <div class="container">
+<header class="hero-header p-0 overflow-hidden">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+        <div class="carousel-inner h-100">
+            <div class="carousel-item active h-100" data-bs-interval="5000">
+                <div class="h-100 w-100" style="background: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.3)), url('fotos/Peine-Flamencos-2007060013.webp') center/cover no-repeat fixed;"></div>
+            </div>
+            <div class="carousel-item h-100" data-bs-interval="5000">
+                <div class="h-100 w-100" style="background: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.3)), url('fotos/Hielo teatral.jpg') center/cover no-repeat fixed;"></div>
+            </div>
+            <div class="carousel-item h-100" data-bs-interval="5000">
+                <div class="h-100 w-100" style="background: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.3)), url('fotos/lota_chile.jpg') center/cover no-repeat fixed;"></div>
+            </div>
+            <div class="carousel-item h-100" data-bs-interval="5000">
+                <div class="h-100 w-100" style="background: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.3)), url('fotos/aerea_san_pedro_(1).jpg') center/cover no-repeat fixed;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="position: relative; z-index: 2; padding: 8rem 0 6rem 0;">
         <div class="row">
             <div class="col-lg-8">
                 <h1 class="hero-title">VIVE</h1>
@@ -135,11 +152,9 @@
                     <h1 class="hero-title" style="color: var(--accent);">NOMADE</h1>
                     <img src="fotos/logo.png" alt="Logo" class="logo-round">
                 </div>
-                
                 <p class="lead text-secondary mt-4 mb-4" style="max-width: 550px; font-weight: 500;">
                     Producción Audiovisual, Drones FPV y Gestión de Archivo Histórico.
                 </p>
-                
                 <div class="mt-2">
                     <a href="https://wa.me/541144027193" target="_blank" class="btn btn-action btn-whatsapp">
                         <i class="bi bi-whatsapp"></i> Contactar ahora
