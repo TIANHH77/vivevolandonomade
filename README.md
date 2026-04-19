@@ -2,7 +2,7 @@
   <h1>📷 HAROLDO HORTA: ATLAS INTERACTIVO 📷</h1>
   <h3>50 Años de Memoria Viva / 50 Years of Living Memory</h3>
   
-  <img src="fotos/pub_antartida/hielo_teatral.webp" width="100%" alt="Haroldo Horta - Portada" style="border-radius: 8px; border: 1px solid #333;">
+  <img src="fotos\pub_antartida\IMG_9109xx.webp" width="100%" alt="Haroldo Horta - Portada" style="border-radius: 8px; border: 1px solid #333;">
   
   <p>
     <i>"De la trinchera al cielo: un registro ininterrumpido de la dignidad humana y la majestuosidad del territorio."</i>
@@ -112,7 +112,7 @@ El legado se digitaliza mediante un **Pipeline de Preservación Digital**. El en
 ## 🇺🇸 ENGLISH: The Architecture of Memory
 
 <div align="center">
-  <img src="fotos/recortes/assets_web/horta-preservacion-digital-proyecto-surdao.webp" width="60%" alt="Digital Preservation Surdao">
+  <img src="fotos\fly_zona norte\DSC_4946xx.webp" width="60%" alt="Digital Preservation Surdao">
 </div>
 
 This digital repository hosts the professional legacy of **Haroldo Horta**. We are currently in the phase of **Narrative Rescue**, utilizing modern data engineering to reconnect the stories behind 1,500+ indexed frames—from Central American conflicts to the majesty of the Antarctic.
