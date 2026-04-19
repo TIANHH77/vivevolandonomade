@@ -13,6 +13,8 @@
       <img src="https://img.shields.io/badge/Donar-PayPal-blue?style=flat-square&logo=paypal" alt="Donación Proyecto Surdao">
     </a>
   </p>
+  
+![Fotos Indexadas](https://img.shields.io/badge/Fotos_Indexadas-1579-00FF00?style=for-the-badge&logo=icloud&logoColor=white)
 
   <p align="center">
     <a href="#-español"><b>🇪🇸 Español</b></a> | 
@@ -20,8 +22,7 @@
     <a href="#-português"><b>🇧🇷 Português</b></a>
   </p>
 
-  <h1><a href="https://haroldohorta.github.io/atlas/">🌍 ACCEDER AL ATLAS INTERACTIVO 🌍</a></h1>
-</div>
+  <h1><a href="https://tianhh77.github.io/vivevolandonomade/">🌍 ACCEDER AL ATLAS INTERACTIVO v3.2 🌍</a></h1>
 
 ---
 
