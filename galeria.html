@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expedientes Atlas | Haroldo Horta</title>
+    <style>
+        :root { 
+            --oro: #FFD700; 
+            --cian: #00d4ff;
+            --fondo: #0a0a0a; 
+            --tarjeta: #151515; 
+            --rojo: #ff003c;
+        }
+        
+        body { 
+            background: var(--fondo); color: #eee; 
+            font-family: 'Courier New', Courier, monospace; 
+            margin: 0; padding: 0; overflow-x: hidden;
+        }
+
+        header { 
+            padding: 30px; border-bottom: 1px solid #333; 
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,0,0,0.9);
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        .btn-volver { 
+            color: var(--oro); text-decoration: none; border: 1px solid var(--oro);
+            padding: 8px 15px; font-size: 12px; transition: 0.3s;
+        }
+        .btn-volver:hover { background: var(--oro); color: #000; }
+
+        /* Grilla de Miniaturas */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px; padding: 40px;
+        }
+
+        .card-expediente {
+            background: var(--tarjeta); border: 1px solid #222;
+            cursor: pointer; transition: 0.3s; overflow: hidden;
+            position: relative;
+        }
+        .card-expediente:hover { border-color: var(--oro); transform: translateY(-5px); }
+
+        .img-container { width: 100%; height: 200px; overflow: hidden; background: #000; }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.3s; }
+        .card-expediente:hover img { opacity: 1; }
+
+        .info-card { padding: 15px; font-size: 11px; line-height: 1.6; }
+        .info-card b { color: var(--oro); }
+
+        /* Visor de Alta Resolución */
+        .visor-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98); z-index: 1000; overflow-y: auto;
+        }
+
+        .visor-content { 
+            display: flex; flex-direction: column; align-items: center; 
+            padding: 40px; min-height: 100vh; 
+        }
+
+        #imgVisor { max-width: 90%; max-height: 70vh; border: 1px solid #333; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+
+        .visor-info { width: 90%; max-width: 1000px; margin-top: 30px; border-top: 1px solid #333; padding-top: 20px; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px; }
+        .meta-item { font-size: 12px; }
+        .meta-item b { color: var(--oro); display: block; margin-bottom: 5px; }
+
+        .btn-master {
+            display: none; background: none; border: 1px solid var(--cian); color: var(--cian);
+            padding: 10px 20px; font-family: inherit; cursor: pointer; font-size: 12px;
+            margin-top: 20px; transition: 0.3s;
+        }
+        .btn-master:hover { background: var(--cian); color: #000; }
+
+        .btn-cerrar {
+            position: fixed; top: 20px; right: 20px; background: none; border: 1px solid #555;
+            color: #fff; padding: 10px 15px; cursor: pointer; z-index: 1100;
+        }
+        .btn-cerrar:hover { background: #fff; color: #000; }
+
+        /* Animación de carga */
+        .loading { text-align: center; padding: 50px; color: var(--oro); font-style: italic; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1 style="margin:0; font-size: 18px; color: var(--oro);">[ ARCHIVO NÓMADE ]</h1>
+        <small style="color: #666;">EXPEDIENTES DE CAMPO - HAROLDO HORTA</small>
+    </div>
+    <a href="index.html" class="btn-volver">VOLVER AL MAPA</a>
+</header>
+
+<div id="loading" class="loading">ACCEDIENDO AL BÚNKER...</div>
+<div id="galeria" class="galeria-grid"></div>
+
+<div id="miVisor" class="visor-overlay">
+    <button class="btn-cerrar" onclick="cerrarVisor()">CERRAR [X]</button>
+    <div class="visor-content">
+        <img id="imgVisor" src="" alt="Cargando...">
+        
+        <div class="visor-info">
+            <h2 id="tituloVisor" style="color:var(--oro); margin-top:0;"></h2>
+            
+            <div class="meta-grid">
+                <div class="meta-item"><b>ZONA:</b> <span id="zonaVisor"></span></div>
+                <div class="meta-item"><b>CAPA:</b> <span id="capaVisor"></span></div>
+                <div class="meta-item"><b>ID ARCHIVO:</b> <span id="idVisor"></span></div>
+            </div>
+
+            <p id="descVisor" style="line-height:1.8; color:#ccc; max-width: 800px;"></p>
+            
+            <button id="btnMaster" class="btn-master"></button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let allData = [];
+
+    // Obtener zona de la URL si existe (ej: galeria.html?zona=santiago)
+    const urlParams = new URLSearchParams(window.location.search);
+    const zonaFiltrada = urlParams.get('zona');
+
+    fetch('data/puntos_mapa.json')
+        .then(response => response.json())
+        .then(data => {
+            allData = data;
+            document.getElementById('loading').style.display = 'none';
+            const container = document.getElementById('galeria');
+
+            // Filtrar por zona si se requiere, sino mostrar todo
+            let displayData = zonaFiltrada ? data.filter(p => p.zona === zonaFiltrada) : data;
+
+            displayData.forEach(p => {
+                // Solo mostrar si tiene imagen (no YouTube)
+                if(!p.youtube_id) {
+                    const idLimpio = p.id.split('_').slice(-2, -1)[0] || p.id;
+                    
+                    container.innerHTML += `
+                        <div class="card-expediente" onclick="abrirVisor('${p.id}')">
+                            <div class="img-container">
+                                <img src="${p.thumb}" loading="lazy">
+                            </div>
+                            <div class="info-card">
+                                <b>ID:</b> ${idLimpio} <br>
+                                <b>TÍTULO:</b> ${p.titulo}
+                                ${p.has_master ? '<br><span style="color:var(--cian); font-size:9px;">💎 MASTER VINCULADO</span>' : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+        });
+
+    function abrirVisor(id) {
+        const p = allData.find(item => item.id === id);
+        if(!p) return;
+
+        document.getElementById('imgVisor').src = p.full;
+        document.getElementById('tituloVisor').innerText = p.titulo.toUpperCase();
+        document.getElementById('zonaVisor').innerText = p.zona.toUpperCase();
+        document.getElementById('capaVisor').innerText = p.capa.toUpperCase();
+        
+        // Limpiamos el ID para el visor también
+        const idLimpio = p.id.split('_').slice(-2, -1)[0] || p.id;
+        document.getElementById('idVisor').innerText = idLimpio;
+        
+        document.getElementById('descVisor').innerText = p.descripcion || "Este archivo forma parte del registro histórico de Haroldo Horta.";
+
+        // Lógica del Botón Master
+        const btnMaster = document.getElementById('btnMaster');
+        if (p.has_master) {
+            btnMaster.style.display = 'inline-block';
+            btnMaster.innerHTML = `📩 SOLICITAR NEGATIVO ORIGINAL (REF: ${idLimpio})`;
+            btnMaster.onclick = () => {
+                const subject = encodeURIComponent(`Solicitud de Master: ${idLimpio}`);
+                const body = encodeURIComponent(`Hola Haroldo,\n\nSolicito el archivo original de la siguiente fotografía del Atlas:\nID: ${idLimpio}\nUbicación Master: ${p.master_path || 'Verificar en DB'}\n\nSaludos.`);
+                window.location.href = `mailto:haroldo@ejemplo.com?subject=${subject}&body=${body}`;
+            };
+        } else {
+            btnMaster.style.display = 'none';
+        }
+
+        document.getElementById('miVisor').style.display = 'block';
+        document.body.style.overflow = 'hidden'; 
+    }
+
+    function cerrarVisor() {
+        document.getElementById('miVisor').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // Cerrar con tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") cerrarVisor();
+    });
+</script>
+
+</body>
+</html>

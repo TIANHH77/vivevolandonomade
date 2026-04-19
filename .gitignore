@@ -1,35 +1,39 @@
-# Archivos grandes sin optimizar
-*.raw
-*.psd
-*.ai
+# --- 🛑 ZONA DE EXCLUSIÓN (Data Pesada) ---
+# Ignorar la carpeta masiva que se está copiando ahora
+legado_haroldo/
+LEGADO_HAROLDO/
+DISCO_MAESTRO_HAROLDO/
 
-# Videos originales (usar links externos)
+# Ignorar las fotos de trabajo (F:\fotos) para no llenar GitHub
+fotos/
+*.jpg
+*.jpeg
+*.png
+*.tif
+*.tiff
+*.CR2
+*.dng
 *.mp4
 *.mov
-*.avi
 
-# Archivos temporales
-*.tmp
-*.bak
-*~
-
-# OS
+# --- 🧹 BASURA DEL SISTEMA ---
+__pycache__/
+*.pyc
+.env
 .DS_Store
 Thumbs.db
+$RECYCLE.BIN/
+System Volume Information/
 
-# IDEs
-.vscode/
-.idea/
-*.swp
+# --- 🔐 SEGURIDAD ---
+# Archivos con claves o configuraciones privadas
+mis_secretos.py
+.streamlit/secrets.toml
 
-# WordPress (si aplica)
-wp-config.php
-.htaccess
-
-# Node modules si usamos herramientas de build
-node_modules/
-package-lock.json
-
-# Archivos de ambiente
-.env
-.env.local
+$RECYCLE.BIN/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+# --- METADATOS DE ADOBE BRIDGE ---
+*.xmp

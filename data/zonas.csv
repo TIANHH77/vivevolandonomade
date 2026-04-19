@@ -1,0 +1,71 @@
+zona,lat,lon,descripcion
+nicaragua,12.136,-86.251,Etapa Corresponsalia Guerra
+managua,12.132,-86.25,Base Revolucion
+peru,-12.046,-77.042,Etapa Corresponsalia 90s
+lima,-12.045,-77.03,Embajada Japonesa / Prensa
+chile,-33.448,-70.665,Patrimonio Nacional
+lota,-37.091,-73.159,Realismo Social Carbon
+santiago,-33.448,-70.665,Capital Chile
+san_pedro,-22.911,-68.199,Base Operaciones Atacama
+cejar,-23.058,-68.214,Laguna Cejar
+lazcar,-23.361,-67.733,Volcan Lascar
+ojos_del_salar,-23.118,-68.212,Ojos del Salar
+peine,-23.682,-68.061,Pueblo de Peine
+planta_litio,-23.473,-68.349,Explotacion Litio
+puritama,-22.723,-68.041,Termas de Puritama
+tara,-23.016,-67.288,Salares de Tara
+tatio,-22.331,-68.013,Geysers del Tatio
+tebenquiche,-23.132,-68.258,Laguna Tebenquiche
+valle_muerte,-22.888,-68.204,Cordillera de la Sal
+junin,-34.583,-60.944,Base Junin Argentina
+antartida,-62.2,-58.964,Base Frei / Territorio Antartico
+valparaiso,-33.047,-71.619,Puerto de Valparaiso
+latinoamerica,-20.0,-60.0,Archivo General Latinoamerica
+alemania,51.165,10.451,Publicaciones Europa
+suecia,60.128,18.643,Publicaciones Europa
+europa,48.856,2.352,Archivo General Europa
+chiloe,-42.612,-73.928,Mitologia y Paisaje
+estrecho_magallanes,-53.616,-70.912,Navegacion Austral
+fordlandia,-3.831,-55.498,Proyecto Ford / Amazonia
+medellin,6.2442,-75.5812,Cronica urbana y transformacion en Medellin
+base_prat,-62.478,-59.663,Base Antartica Arturo Prat (Chile) - Travesia Esmeralda
+base_esperanza,-63.397,-56.996,Base Antartica Esperanza (Argentina) - Travesia Esmeralda
+port_lockroy,-64.825,-63.494,Base Inglesa Port Lockroy - Travesia Esmeralda
+tahiti,-17.65,-149.426,Polinesia Francesa: Papeete - Ruta del Buque Escuela
+isla_de_pascua,-27.112,-109.349,Rapa Nui: El ombligo del mundo - Travesia Esmeralda
+miami,25.761,-80.191,Miami Florida - Encuentros navales internacionales
+espana,40.416,-3.703,España: Escala europea de la Esmeralda
+ecuador,-0.18,-78.467,Ecuador: Travesia por el Pacifico
+faro_evangelistas,-52.389,-75.105,Faro Evangelistas: El centinela del Estrecho
+faro_corona,-41.783,-73.88,Faro Corona: Entrada al Canal de Chacao
+faro_diego_ramirez,-56.511,-68.73,Faro Diego Ramirez: El punto mas austral
+faro_punta_angamos,-23.083,-70.516,Faro Punta Angamos: Vigilante de Mejillones
+valle_luna,-22.9112,-68.323,Valle de la Luna / Atacama
+salar_atacama,-22.6667,-68.25,Salar de Atacama / Geotermia
+geyser_tatio,-22.3313,-68.0102,Geysers del Tatio / 4290msnm
+laguna_tara,-22.4667,-68.25,Laguna de Tara / Cordillera de la Sal
+uyuni,-20.1338,-67.4891,Salar de Uyuni / Bolivia
+chaxa,-23.1875,-67.5098,Laguna Chaxa / Reserva Nacional
+saladillo,-35.6048,-59.8165,Saladillo / Vuelo Buenos Aires
+puerto_montt,-41.4693,-72.9423,Puerto Montt / Region de Los Lagos
+punta_arenas,-53.1637,-70.917,Punta Arenas / Estrecho de Magallanes
+arica,-18.4755,-70.3005,Arica / Ciudad y Puerto
+iquique,-20.2132,-70.1502,Iquique / Costa del Desierto
+iquique_vuelo,-20.2177,-70.1521,Iquique / Parapente Cerro Dragon
+antofagasta,-23.6509,-70.3975,Antofagasta / La Portada
+guatemala,14.634,-90.506,Archivo Historico Guatemala
+pehuenches,-35.983,-70.383,Seleccion Pehuenches / Cordillera
+zona_norte,-22.911,-68.199,Vuelo Zona Norte (San Pedro y alrededores)
+valle_arco_iris,-22.583,-68.250,Nomade: Valle del Arco Iris
+chiloe_top,-41.866,-73.833,Chiloe: Archivo Patrimonial
+frutillar,-41.133,-73.016,Archivo Patrimonial Frutillar
+estrecho_magallanes,-53.162,-70.908,Navegacion Estrecho de Magallanes
+derechos_humanos,-33.443,-70.653,Registro DDHH: La Moneda
+rapanui,-27.1127,-109.3497,Rapa Nui - Isla de Pascua
+valparaiso,-33.047,-71.612,Puerto de Valparaiso
+calbuco,-41.770,-73.130,Archivo Patrimonial Calbuco
+torres_del_paine,-51.000,-72.980,Parque Nacional Torres del Paine
+puerto_williams,-54.934,-67.611,Nomade: Puerto Williams
+derechos_humanos,-33.4447,-70.6653,Archivo Derechos Humanos
+rapanui,-27.1127,-109.3497,Rapa Nui - Isla de Pascua
+isla_pascua,-27.1127,-109.3497,Rapa Nui - Isla de Pascua

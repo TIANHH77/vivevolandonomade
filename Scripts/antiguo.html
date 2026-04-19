@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Haroldo Horta | 50 Años de Luz</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; background: #0a0a0a; color: white; font-family: 'Courier New', Courier, monospace; overflow: hidden; }
+        #map { width: 100%; height: 100vh; background: #0d0d0d; }
+        
+        /* Pantalla de Carga */
+        #loading {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
+        }
+        .spinner { width: 50px; height: 50px; border: 5px solid #333; border-top: 5px solid #FFD700; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Filtros Laterales */
+        .sidebar {
+            position: absolute; top: 20px; left: 20px; z-index: 1000;
+            background: rgba(0,0,0,0.85); padding: 20px; border-left: 3px solid #FFD700;
+            max-width: 250px; backdrop-filter: blur(5px);
+        }
+        .btn-filtro {
+            display: block; width: 100%; padding: 10px; margin: 8px 0;
+            background: #222; border: 1px solid #444; color: #fff;
+            cursor: pointer; text-align: left; font-size: 11px; font-weight: bold;
+            transition: 0.3s; text-transform: uppercase;
+        }
+        .btn-filtro:hover { background: #333; border-color: #eee; }
+        .btn-filtro.inactive { opacity: 0.3; filter: grayscale(1); }
+        
+        /* Colores de botones */
+        #btn-patrimonio { border-left: 5px solid #FFD700; }
+        #btn-aereo { border-left: 5px solid #005CE6; }
+        #btn-nomad { border-left: 5px solid #FF1A1A; }
+        #btn-narrativa { border-left: 5px solid #9900FF; }
+        #btn-todo { background: #FFD700; color: #000; text-align: center; }
+
+        /* Popups del Mapa */
+        .leaflet-popup-content-wrapper { background: #1a1a1a; color: white; border: 1px solid #444; border-radius: 0; }
+        .leaflet-popup-tip { background: #1a1a1a; }
+        .btn-portafolio {
+            display: block; background: #FFD700; color: #000; text-align: center;
+            padding: 8px; margin-top: 10px; text-decoration: none; font-weight: bold; font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="loading">
+    <div class="spinner"></div>
+    <div style="letter-spacing: 5px; color: #FFD700;">CARGANDO ATLAS . . .</div>
+</div>
+
+<div class="sidebar">
+    <h2 style="margin:0 0 15px 0; font-size: 18px; color: #FFD700;">EXPEDICIONES</h2>
+    <button id="btn-todo" class="btn-filtro" onclick="verTodo()">VER TODO EL ATLAS</button>
+    <button id="btn-patrimonio" class="btn-filtro" onclick="toggleCapa('patrimonio')">CRÓNICA / ETNOGRAFÍA</button>
+    <button id="btn-aereo" class="btn-filtro" onclick="toggleCapa('aereo')">VUELO AÉREO</button>
+    <button id="btn-nomad" class="btn-filtro" onclick="toggleCapa('nomad')">BITÁCORA NÓMADA</button>
+    <button id="btn-narrativa" class="btn-filtro" onclick="toggleCapa('narrativa')">NARRATIVA SONORA</button>
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // Inicialización del Mapa Satelital
+    const vistaSatelite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 19
+    });
+
+    const vistaRadar = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19
+    });
+
+    // 2. Inicializamos el mapa con la Satelital por defecto
+    const map = L.map('map', { 
+        attributionControl: false,
+        layers: [vistaSatelite] 
+    }).setView([-34.6037, -58.3816], 4);
+
+    // 3. Agregamos el control de capas (El interruptor)
+    const capasBase = {
+        "🛰️ VISTA SATELITAL": vistaSatelite,
+        "📡 MODO RADAR": vistaRadar
+    };
+    L.control.layers(capasBase, null, { collapsed: false }).addTo(map);
+    const markers = L.layerGroup().addTo(map);
+    let allData = [];
+    let filtrosActivos = { patrimonio: true, aereo: true, nomad: true, narrativa: true };
+
+    // Efecto espiral para coordenadas duplicadas
+    function getSpiralOffset(lat, lon, index) {
+        if (index === 0) return [lat, lon];
+        const angle = 0.5 * index;
+        const radius = 0.0003 * index; 
+        return [ lat + (radius * Math.cos(angle)), lon + (radius * Math.sin(angle)) ];
+    }
+
+    // Carga de Datos con Cache-Busting (para que Starlink no te engañe con archivos viejos)
+    fetch('data/puntos_mapa.json?v=' + Date.now())
+        .then(res => res.json())
+        .then(data => {
+            console.log("✅ Datos cargados:", data.length, "puntos encontrados.");
+            allData = data;
+            renderizarMapa();
+            document.getElementById('loading').style.display = 'none';
+        })
+        .catch(err => {
+            console.error("❌ Error cargando el Atlas:", err);
+            alert("Error al cargar los datos. Revisa la consola (F12).");
+            document.getElementById('loading').innerHTML = "ERROR AL CARGAR DATOS";
+        });
+
+    function renderizarMapa() {
+        markers.clearLayers();
+        let indexSpiral = 0;
+
+        allData.forEach((p) => {
+            if (!p.lat || !p.lon) return;
+
+            // --- CLASIFICADOR BLINDADO ---
+            let tipo = 'patrimonio'; 
+            const capaRaw = (p.capa || "").toLowerCase();
+            const rutaRaw = (p.thumb || "").toLowerCase();
+
+            if (capaRaw.includes('narrativa')) {
+                tipo = 'narrativa';
+            } else if (capaRaw.includes('aéreo') || capaRaw.includes('aereo') || rutaRaw.includes('fly_')) {
+                tipo = 'aereo';
+            } else if (capaRaw.includes('nómada') || capaRaw.includes('nomad') || rutaRaw.includes('nomad_')) {
+                tipo = 'nomad';
+            } else {
+                tipo = 'patrimonio';
+            }
+
+            // Colores por tipo
+            let mColor = "#FFD700"; // Patrimonio
+            if (tipo === 'narrativa') mColor = "#9900FF";
+            if (tipo === 'aereo')     mColor = "#005CE6";
+            if (tipo === 'nomad')     mColor = "#FF1A1A";
+
+            if (filtrosActivos[tipo]) {
+                const [lat, lon] = getSpiralOffset(parseFloat(p.lat), parseFloat(p.lon), indexSpiral++);
+                
+                const marker = L.circleMarker([lat, lon], { 
+                    radius: 8, fillColor: mColor, color: "#ffffff", weight: 2, fillOpacity: 1 
+                });
+                
+                marker.bindPopup(`
+                    <div style="min-width:160px; text-align:center;">
+                        <div style="font-size:9px; color:${mColor}; font-weight:bold; text-transform:uppercase;">${tipo}</div>
+                        <h3 style="margin:5px 0; color:#fff; font-size:14px;">${(p.zona || 'DESCONOCIDO').toUpperCase()}</h3>
+                        <img src="${p.thumb}" style="width:100%; border:1px solid #444;" onerror="this.style.display='none'">
+                        <p style="font-size:11px; color:#aaa; margin:5px 0;">${p.titulo}</p>
+                        <a href="galeria.html?zona=${p.zona}" class="btn-portafolio">ABRIR EXPEDIENTE 📂</a>
+                    </div>
+                `);
+                
+                markers.addLayer(marker);
+            }
+        });
+    }
+
+    window.toggleCapa = (capa) => {
+        filtrosActivos[capa] = !filtrosActivos[capa]; 
+        document.getElementById(`btn-${capa}`).classList.toggle('inactive', !filtrosActivos[capa]);
+        document.getElementById('btn-todo').classList.add('inactive');
+        renderizarMapa();
+    };
+
+    window.verTodo = () => {
+        filtrosActivos = { patrimonio: true, aereo: true, nomad: true, narrativa: true };
+        ['patrimonio', 'aereo', 'nomad', 'narrativa', 'todo'].forEach(c => {
+            document.getElementById(`btn-${c}`).classList.remove('inactive');
+        });
+        renderizarMapa();
+        if (markers.getLayers().length > 0) map.fitBounds(markers.getBounds());
+    };
+</script>
+</body>
+</html>

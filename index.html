@@ -3,290 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vive Volando Nómade | Producción Audiovisual 8K & Legado</title>
+    <title>Vive Volando Nómade | Consola de Mando Atlas</title>
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css">
     
     <style>
-        :root { 
-            --accent: #00ff66; 
-            --info-blue: #00d4ff; 
-            --dark: #050505; 
-            --whatsapp: #25d366; 
-            --bg-gradient: radial-gradient(circle at top, #111111, var(--dark));
+        :root {
+            --cian: #00d4ff;     /* Aéreas */
+            --naranja: #ff9100;  /* Publicaciones */
+            --verde: #39ff14;    /* Nómade */
+            --rojo: #ff003c;     /* Videos 8K */
+            --morado: #bc13fe;   /* Relatos */
+            --oro: #FFD700;
+            --dark-pure: #000000;
+            --console-bg: rgba(0, 0, 0, 0.98);
+        }
+
+        body, html { 
+            margin: 0; padding: 0; height: 100%; width: 100%; 
+            background: #000; overflow: hidden; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
         }
         
-        body { 
-            background: var(--bg-gradient); 
-            background-attachment: fixed;
-            color: #eee; 
-            font-family: 'Inter', sans-serif; 
-            overflow-x: hidden;
+        #viewport { perspective: 1200px; width: 100%; height: 100%; overflow: hidden; background: #000; }
+        #map { width: 100%; height: 100%; transform-origin: bottom; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1; }
+
+        /* MODOS DE VISTA */
+        .view-flat #map { transform: rotateX(0deg) scale(1.0); }
+        .view-oblique #map { transform: rotateX(25deg) scale(1.5); }
+
+        #videoVisor {
+            display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.98); z-index:9999; align-items:center; justify-content:center;
+            flex-direction: column;
         }
 
-        .hero-header {
-            position: relative;
-            min-height: 85vh;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            background: #000;
+        .navbar-brand {
+            position: fixed; top: 25px; left: 30px; z-index: 2000;
+            font-weight: 800; font-size: 1.3rem; color: #fff; text-decoration: none;
+            letter-spacing: -1px; text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(0,0,0,0.8);
         }
+        .navbar-brand span { color: var(--cian); }
 
-        .hero-title {
-            font-size: 5.5rem;
-            font-weight: 900;
-            line-height: 0.85;
-            text-transform: uppercase;
-            margin: 0;
-            letter-spacing: -3px;
-            color: #fff9f9;
-            text-shadow: 0 0 15px rgba(14, 13, 13, 0.97), 0 0 30px rgba(72, 219, 56, 0.9);
-            transition: all 0.4s ease;
-        }
-
-        .text-nomade-container {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .text-nomade-container .hero-title {
-            color: var(--accent) !important;
-            text-shadow: 0 0 15px rgba(14, 13, 13, 0.8), 0 0 30px rgba(0, 255, 102, 0.9);
-        }
-
-        .logo-round {
-            width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
-            border: 3px solid var(--accent); box-shadow: 0 0 30px rgba(0, 255, 102, 0.4);
-            background: #000;
-        }
-
-        section { padding: 4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-
-        .btn-action { 
-            border-radius: 50px; font-weight: bold; padding: 12px 30px; 
-            text-transform: uppercase; transition: all 0.3s ease; letter-spacing: 0.5px;
-        }
-        .btn-whatsapp { background: var(--whatsapp); color: white; border: none; }
-        .btn-whatsapp:hover { background: #1da851; color: white; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); }
+        .top-controls { position: fixed; top: 25px; right: 30px; z-index: 2000; display: flex; gap: 10px; }
+        .control-group { background: rgba(0,0,0,0.85); padding: 4px; border-radius: 4px; display: flex; gap: 4px; border: 1px solid #222; }
         
-        .card-service {
-            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px; padding: 2.5rem; transition: 0.4s; height: 100%; backdrop-filter: blur(10px);
+        .view-btn {
+            background: #111; border: 1px solid #333; color: #666;
+            padding: 6px 12px; font-size: 9px; cursor: pointer; 
+            text-transform: uppercase; font-weight: bold; transition: 0.2s;
         }
-        .card-service:hover { border-color: var(--accent); background: rgba(0, 255, 102, 0.05); transform: translateY(-5px); }
+        .view-btn.active { background: var(--cian); color: #000; border-color: var(--cian); }
 
-        .atlas-container {
-            border: 2px solid var(--info-blue); border-radius: 20px; overflow: hidden;
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15); height: 75vh; width: 100%; background: #000;
-        }
-
-        .video-card {
-            border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.3s ease;
+        .console-list {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 75px;
+            background: var(--console-bg); border-top: 1px solid #222;
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 0 25px; z-index: 3000; backdrop-filter: blur(10px);
         }
 
-        .github-link-fixed {
-            position: fixed; right: -110px; top: 50%; transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1); border-right: none;
-            padding: 15px 20px; border-radius: 30px 0 0 30px; z-index: 1000;
-            transition: all 0.4s ease; text-decoration: none; display: flex; align-items: center; gap: 15px; color: #fff;
-        }
-        .github-link-fixed:hover { right: 0; background: rgba(255, 255, 255, 0.1); border-color: var(--accent); color: var(--accent); }
+        .console-section { display: flex; align-items: center; gap: 12px; }
 
-        @media (max-width: 768px) {
-            .hero-title { font-size: 3.5rem; }
-            .logo-round { width: 80px; height: 80px; }
+        .social-btn {
+            width: 32px; height: 32px; border-radius: 50%; border: 1px solid #333;
+            display: flex; align-items: center; justify-content: center;
+            color: #555; text-decoration: none; font-size: 14px; transition: 0.3s;
         }
+        .social-btn:hover { border-color: var(--cian); color: var(--cian); }
+
+        .nav-item {
+            background: transparent; border: 1px solid #333; color: #555;
+            padding: 8px 14px; border-radius: 4px; font-size: 10px;
+            font-weight: 700; text-transform: uppercase; transition: 0.3s all; cursor: pointer;
+        }
+
+        #btn-fly.active { color: var(--cian); border-color: var(--cian); }
+        #btn-pub.active { color: var(--naranja); border-color: var(--naranja); }
+        #btn-nomad.active { color: var(--verde); border-color: var(--verde); }
+        #btn-video.active { color: var(--rojo); border-color: var(--rojo); }
+        #btn-audio.active { color: var(--morado); border-color: var(--morado); }
+
+        .btn-quote { border: 2px solid #fff !important; color: #fff !important; margin: 0 10px; }
+        .btn-quote:hover { background: #fff; color: #000 !important; }
+
+        .btn-paypal {
+            background: transparent; border: 1px solid #0070ba; padding: 5px 12px;
+            border-radius: 4px; transition: 0.3s; display: flex; align-items: center;
+        }
+
+        .leaflet-popup-content-wrapper { background: #000 !important; color: #fff !important; border: 1px solid #333 !important; border-radius: 2px !important; }
+        .btn-expediente { display: block; width: 100%; background: #fff; color: #000; text-align: center; padding: 10px; margin-top: 10px; font-weight: bold; text-decoration: none; font-size: 10px; text-transform: uppercase; }
+        .btn-cine { display: block; width: 100%; background: var(--rojo); color: #fff; text-align: center; padding: 10px; margin-top: 10px; font-weight: bold; border:none; cursor:pointer; font-size: 10px; }
     </style>
 </head>
-<body>
+<body class="view-flat">
 
-<a href="https://github.com/haroldohorta/atlas" target="_blank" class="github-link-fixed">
-    <i class="bi bi-github"></i> <span>Proyecto Surdao</span>
-</a>
+    <div id="videoVisor">
+        <button onclick="cerrarVideo()" style="position:absolute; top:20px; right:20px; color:#fff; background:none; border:1px solid #fff; padding:10px; cursor:pointer; font-family:monospace;">CERRAR [X]</button>
+        <div id="videoContainer" style="width:85%; height:80%; box-shadow: 0 0 50px rgba(255,0,60,0.2);"></div>
+        <h2 id="videoTitulo" style="color:#fff; margin-top:20px; font-family:monospace; letter-spacing:3px; font-size:14px;"></h2>
+    </div>
 
-<header class="hero-header p-0 overflow-hidden">
-    <div id="heroCarousel" class="carousel slide carousel-fade h-100 w-100" data-bs-ride="carousel" style="position: absolute; top: 0; left: 0; z-index: 1;">
-        <div class="carousel-inner h-100">
-            <div class="carousel-item active h-100">
-                <div class="h-100 w-100" style="background: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.3)), url('fotos/Hielo teatral.jpg') center/cover no-repeat;"></div>
+    <a class="navbar-brand" href="#">VIVE VOLANDO NÓMADE<span>.</span></a>
+
+    <div class="top-controls">
+        <div class="control-group">
+            <button class="view-btn" id="angle-oblique" onclick="setViewMode('oblique')">Oblicuo</button>
+            <button class="view-btn active" id="angle-flat" onclick="setViewMode('flat')">Plano</button>
+        </div>
+        <div class="control-group">
+            <button class="view-btn active" id="layer-radar" onclick="setMapLayer('radar')">Radar</button>
+            <button class="view-btn" id="layer-sat" onclick="setMapLayer('sat')">Satélite</button>
+        </div>
+    </div>
+
+    <div id="viewport"><div id="map"></div></div>
+
+    <div class="console-list">
+        <div class="console-section">
+            <img src="fotos/logo.png" alt="Vive Volando" style="height: 45px; filter: brightness(1.5);">
+            <div style="display:flex; gap:8px; margin-left:15px;">
+                <a href="https://www.facebook.com/haroldo.tricallotis" target="_blank" class="social-btn"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/vivevolandonomade/" target="_blank" class="social-btn"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.youtube.com/@vivevolandonomade" target="_blank" class="social-btn"><i class="bi bi-youtube"></i></a>
             </div>
-            <div class="carousel-item h-100">
-                <div class="h-100 w-100" style="background: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.3)), url('fotos/abimael_guzman_1.webp') center/cover no-repeat;"></div>
-            </div>
-            <div class="carousel-item h-100">
-                <div class="h-100 w-100" style="background: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.3)), url('fotos/altiplano.webp') center/cover no-repeat;"></div>
-            </div>
-            <div class="carousel-item h-100">
-                <div class="h-100 w-100" style="background: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.3)), url('fotos/planta_litio.webp') center/cover no-repeat;"></div>
-            </div>
-            <div class="carousel-item h-100">
-                <div class="h-100 w-100" style="background: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.3)), url('fotos/Peine-Flamencos-2007060013.webp') center/cover no-repeat;"></div>
-            </div>
-            <div class="carousel-item h-100">
-                <div class="h-100 w-100" style="background: linear-gradient(to right, rgba(5,5,5,0.9) 30%, rgba(5,5,5,0.3)), url('fotos/lota_chile.webp') center/cover no-repeat;"></div>
+        </div>
+
+        <div class="console-section">
+            <button class="nav-item active" id="btn-fly" onclick="toggleCapa('fly')">Aéreas</button>
+            <button class="nav-item active" id="btn-pub" onclick="toggleCapa('pub')">Reportajes</button>
+            <button class="nav-item active" id="btn-nomad" onclick="toggleCapa('nomad')">Nómade</button>
+            <button class="nav-item btn-quote" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSfg4V1pd1oViKIjLLZs4MZOEwG7lubmo-wijLkuLV0RgqxdRQ/viewform', '_blank')">COTIZAR</button>
+            <button class="nav-item active" id="btn-video" onclick="toggleCapa('video')">Videos 8K</button>
+            <button class="nav-item active" id="btn-audio" onclick="toggleCapa('audio')">Relatos</button>
+        </div>
+
+        <div class="console-section">
+            <a href="https://www.paypal.com/paypalme/Vivevolandonomade" target="_blank" class="btn-paypal">
+                <img src="https://img.shields.io/badge/Donar-PayPal-blue?style=flat-square&logo=paypal" alt="Donar">
+            </a>
+            <div style="font-size: 8px; color: #444; text-align: right; letter-spacing: 1px; margin-left: 15px;">
+                STATUS: ONLINE<br>CORE_SYSTEM_v3.2
             </div>
         </div>
     </div>
 
-    <div class="container" style="position: relative; z-index: 2; padding: 8rem 0 6rem 0;">
-        <div class="row">
-            <div class="col-lg-8">
-                <h1 class="hero-title">VIVE</h1>
-                <h1 class="hero-title">VOLANDO</h1>
-                <div class="text-nomade-container">
-                    <h1 class="hero-title">NOMADE</h1>
-                    <img src="fotos/logo.png" alt="Logo" class="logo-round">
-                </div>
-                <p class="lead text-secondary mt-4 mb-4" style="max-width: 550px; font-weight: 500;">
-                    Producción Audiovisual, Drones FPV y Gestión de Archivo Histórico.
-                </p>
-                <div class="mt-2">
-                    <a href="https://wa.me/541144027193" target="_blank" class="btn btn-action btn-whatsapp">
-                        <i class="bi bi-whatsapp"></i> Contactar ahora
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        let allData = [];
+        let markers = L.layerGroup();
+        let filtrosActivos = { fly: true, pub: true, nomad: true, video: true, audio: true };
 
-<main class="container">
-    <section id="servicios">
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="card-service">
-                    <h3 class="fw-bold mb-3"><i class="bi bi-rocket-takeoff text-accent"></i> FPV Cinematográfico</h3>
-                    <p class="text-secondary small mb-4">Operación profesional con DJI Avata. 4K estabilizado para eventos y arquitectura.</p>
-                    <div class="d-grid"><a href="https://forms.gle/1zFJVcxempE4PLcy9" target="_blank" class="btn btn-action btn-outline-success">Cotizar FPV</a></div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card-service">
-                    <h3 class="fw-bold mb-3"><i class="bi bi-camera-reels text-info"></i> Inmersión 360 & 8K</h3>
-                    <p class="text-secondary small mb-4">Registro con Insta360 X5. Especialistas en patrimonio y legado histórico.</p>
-                    <div class="d-grid"><a href="https://wa.me/541144027193" target="_blank" class="btn btn-action btn-outline-info">Consultar</a></div>
-                </div>
-            </div>
-        </div>
-    </section>
+        const map = L.map('map', { zoomControl: false, attributionControl: false }).setView([-33.448, -70.665], 4);
+        const radar = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+        const sat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}');
+        markers.addTo(map);
 
-    <section id="atlas">
-        <div class="text-center mb-4">
-            <h2 class="h1 fw-bold"><i class="bi bi-globe-americas text-info"></i> Portal del Legado Histórico</h2>
-            <p class="text-secondary">Explora el Atlas interactivo de Haroldo Horta.</p>
-        </div>
-        <div class="atlas-container">
-            <iframe src="https://haroldohorta.github.io/atlas/" width="100%" height="100%" style="border:none;" allowfullscreen></iframe>
-        </div>
-    </section>
+        function setViewMode(mode) {
+            document.body.className = (mode === 'oblique') ? 'view-oblique' : 'view-flat';
+            document.getElementById('angle-oblique').classList.toggle('active', mode === 'oblique');
+            document.getElementById('angle-flat').classList.toggle('active', mode === 'flat');
+            setTimeout(() => map.invalidateSize(), 800);
+        }
 
-   <section id="videos">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold"><i class="bi bi-youtube text-danger"></i> Producciones Destacadas</h2>
-            <p class="text-secondary">Registro de Territorios, Archivo Histórico y Vuelo Cinematográfico</p>
-        </div>
+        function setMapLayer(layer) {
+            if (layer === 'radar') { map.removeLayer(sat); radar.addTo(map); } 
+            else { map.removeLayer(radar); sat.addTo(map); }
+            document.getElementById('layer-radar').classList.toggle('active', layer === 'radar');
+            document.getElementById('layer-sat').classList.toggle('active', layer === 'sat');
+        }
 
-        <div class="row g-5">
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/_nJBlKJ1CVA" title="La psicodelia de los girasoles" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-accent text-center">Girasoles</h4>
-            </div>
+        fetch('data/puntos_mapa.json?v=' + new Date().getTime())
+            .then(res => res.json())
+            .then(data => {
+                allData = data;
+                renderizarMapa();
+            });
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/gnlZbYrOumA" title="Valle de la Luna" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-info text-center">Valle de la Luna</h4>
-            </div>
+        function obtenerColorCapa(capa) {
+            const c = capa.toLowerCase();
+            if (c.includes('fly') || c.includes('vuelo')) return 'var(--cian)';
+            if (c.includes('pub') || c.includes('patrimonio')) return 'var(--naranja)';
+            if (c.includes('nomad')) return 'var(--verde)';
+            if (c.includes('video')) return 'var(--rojo)';
+            return 'var(--morado)';
+        }
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/Nz9RBWm8IEk" title="Junin" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-white text-center">Junin</h4>
-            </div>
+       function renderizarMapa() {
+            markers.clearLayers();
+            
+            // ORDENAR: Las fotos de 5 estrellas se dibujan AL FINAL para que queden encima de las normales
+            let datosOrdenados = [...allData].sort((a, b) => (a.rating || 0) - (b.rating || 0));
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/FchsQOWHa_Y" title="Fin de temporada" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-secondary text-center">Fin de temporada</h4>
-            </div>
+            datosOrdenados.forEach(p => {
+                const capaKey = p.capa.toLowerCase().includes('vuelo') ? 'fly' : 
+                               p.capa.toLowerCase().includes('patrimonio') ? 'pub' : p.capa.toLowerCase();
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/Sapdlg1mKGs" title="Brisa" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-secondary text-center">Brisa</h4>
-            </div>
+                if (filtrosActivos[capaKey] || filtrosActivos[p.capa.toLowerCase()]) {
+                    const esElite = p.rating === 5;
+                    const mColor = obtenerColorCapa(p.capa);
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/Ln8frUxqXJ8" title="De Jubilado a Jubilado" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-secondary text-center">De Jubilado a Jubilado</h4>
-            </div>
+                    const marker = L.circleMarker([p.lat, p.lon], {
+                        radius: esElite ? 12 : 6, 
+                        fillColor: mColor, 
+                        color: esElite ? "#fff" : "transparent",
+                        weight: 2, 
+                        fillOpacity: 0.9
+                    });
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/UQtFzlhHXLM" title="Vuelo de Maria" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-secondary text-center">Vuelo de Maria</h4>
-            </div>
+                    // Estrellas doradas solo si es Rating 5 (Bridge)
+                    let estrellasHtml = esElite ? '<div style="color:var(--oro); font-size:16px; margin-bottom:5px;">★★★★★</div>' : '';
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/ah_BjECiLCY" title="Casa de adobe" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-secondary text-center">Casa de adobe</h4>
-            </div>
+                    let popupContent = `
+                        <div style="width:220px; background:#000; text-align:center; padding:5px;">
+                            ${estrellasHtml}
+                            <h4 style="margin:5px 0; font-size:12px; color:#fff; text-transform:uppercase; letter-spacing:1px;">${p.titulo}</h4>
+                            ${p.youtube_id ? 
+                                `<button onclick="abrirVideo('${p.youtube_id}', '${p.titulo}')" class="btn-cine">▶ MODO CINE 8K</button>` :
+                                `<img src="${p.thumb}" style="width:100%; border:1px solid #222; border-radius:4px;">`
+                            }
+                            <p style="font-size:10px; color:#666; margin-top:8px;">${p.descripcion || ''}</p>
+                            <a href="galeria.html?zona=${p.zona}" class="btn-expediente">ABRIR EXPEDIENTE</a>
+                        </div>
+                    `;
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/K6i-rkbmQNc" title="Volá" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-secondary text-center">Volá</h4>
-            </div>
+                    marker.bindPopup(popupContent).addTo(markers);
+                }
+            });
+        }
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/3oLPavUKfOQ" title="Volando al Amanecer" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-secondary text-center">Volando al Amanecer</h4>
-            </div>
+        function abrirVideo(id, titulo) {
+            document.getElementById('videoTitulo').innerText = titulo.toUpperCase();
+            document.getElementById('videoContainer').innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+            document.getElementById('videoVisor').style.display = 'flex';
+        }
 
-            <div class="col-12 col-lg-10 offset-lg-1">
-                <div class="video-card ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/Ad0bVldxpmE" title="San Pedro" allowfullscreen></iframe>
-                </div>
-                <h4 class="mt-3 text-secondary text-center">San Pedro</h4>
-            </div>
-        </div>
-    </section>
-</main>
+        function cerrarVideo() {
+            document.getElementById('videoVisor').style.display = 'none';
+            document.getElementById('videoContainer').innerHTML = '';
+        }
 
-<footer class="py-5 mt-4 text-center text-secondary border-top border-dark">
-    <p class="small">&copy; 2026 Vive Volando Nómade. Junín - Mendoza - Buenos Aires - Santiago de Chile.</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var myCarousel = new bootstrap.Carousel(document.getElementById('heroCarousel'), {
-            interval: 8000,
-            ride: 'carousel',
-            pause: false
-        });
-    });
-</script>
-
+        function toggleCapa(capa) {
+            filtrosActivos[capa] = !filtrosActivos[capa];
+            const btn = document.getElementById(`btn-${capa}`);
+            if(btn) btn.classList.toggle('active');
+            renderizarMapa();
+        }
+    </script>
 </body>
 </html>
