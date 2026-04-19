@@ -2,7 +2,7 @@
   <h1>📷 HAROLDO HORTA: ATLAS INTERACTIVO 📷</h1>
   <h3>50 Años de Memoria Viva / 50 Years of Living Memory</h3>
   
-  <img src="fotos\pub_antartida\IMG_9109xx.webp" width="100%" alt="Haroldo Horta - Portada" style="border-radius: 8px; border: 1px solid #333;">
+  <img src="fotos\fly_zona norte\DSC_4425-Editarxx.webp" width="100%" alt="Haroldo Horta - Portada" style="border-radius: 8px; border: 1px solid #333;">
   
   <p>
     <i>"De la trinchera al cielo: un registro ininterrumpido de la dignidad humana y la majestuosidad del territorio."</i>
