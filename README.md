@@ -122,6 +122,10 @@ This digital repository hosts the professional legacy of **Haroldo Horta**. We a
 <a name="-português"></a>
 ## 🇧🇷 PORTUGUÊS: Resumo do Arquivo
 
+<div align="center">
+  <img src="fotos\fly_zona norte\IMG_1118xx.webp" width="60%" alt="Digital Preservation Surdao">
+</div>
+
 Este repositório contém o legado digital de **Haroldo Horta**. Como correspondente internacional e fotógrafo editorial, Horta registrou momentos cruciais da história latino-americana, unindo o rigor jornalístico à majestade do território através do voo livre.
 
 ---
@@ -129,3 +133,7 @@ Este repositório contém o legado digital de **Haroldo Horta**. Como correspond
 ## 🛡️ Blindaje del Legado y Propiedad
 © 2026 Haroldo Horta / Proyecto Surdao. Todos los derechos reservados.
 *Este Atlas es un organismo vivo en constante expansión. Cada imagen ha sido validada técnica y legalmente para asegurar su permanencia como patrimonio visual.*
+
+<div align="center">
+  <img src="fotos\pub_chiloe_top\Portada libro Chiloé.webp" width="60%" alt="Digital Preservation Surdao">
+</div>
