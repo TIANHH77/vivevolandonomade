@@ -24,6 +24,8 @@
   </p>
 </div>
 
+
+<img src="fotos\pub_antartida\IMG_9818xx.webp" width="100%" alt="Haroldo Horta - Portada" style="border-radius: 8px; border: 1px solid #333;">
 ---
 
 <a name="-español"></a>
